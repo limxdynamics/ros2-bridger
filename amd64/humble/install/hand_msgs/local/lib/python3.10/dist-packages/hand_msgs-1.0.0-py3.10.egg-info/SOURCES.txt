@@ -4,7 +4,3 @@ hand_msgs.egg-info/PKG-INFO
 hand_msgs.egg-info/SOURCES.txt
 hand_msgs.egg-info/dependency_links.txt
 hand_msgs.egg-info/top_level.txt
-hand_msgs/msg/__init__.py
-hand_msgs/msg/_hand_cmd.py
-hand_msgs/msg/_hand_msg.py
-hand_msgs/msg/_hand_state.py

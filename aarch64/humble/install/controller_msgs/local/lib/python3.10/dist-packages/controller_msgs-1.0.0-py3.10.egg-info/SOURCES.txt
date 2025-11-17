@@ -4,3 +4,7 @@ controller_msgs.egg-info/PKG-INFO
 controller_msgs.egg-info/SOURCES.txt
 controller_msgs.egg-info/dependency_links.txt
 controller_msgs.egg-info/top_level.txt
+controller_msgs/msg/__init__.py
+controller_msgs/msg/_imu_data.py
+controller_msgs/msg/_joint_cmd.py
+controller_msgs/msg/_joint_state.py
