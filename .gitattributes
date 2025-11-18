@@ -1,0 +1,2 @@
+amd64/jazzy/install/mrosbridger/bin/mrosbridger filter=lfs diff=lfs merge=lfs -text
+aarch64/jazzy/install/mrosbridger/bin/mrosbridger filter=lfs diff=lfs merge=lfs -text
