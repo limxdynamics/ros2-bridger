@@ -63,6 +63,19 @@
   ros2 launch mrosbridger mrosbridger.launch.py
   ```
 
+- ROS2 Jazzy
+
+  ```
+  # 加载 ROS 环境
+  source /opt/ros/jazzy/setup.bash
+  
+  # 加载 ros2_bridger 安装环境
+  source amd64/jazzy/install/setup.bash
+  
+  # 启动桥接节点
+  ros2 launch mrosbridger mrosbridger.launch.py
+  ```
+
 ##### 4.2 aarch64 架构：
 
 - ROS2 Foxy
@@ -88,7 +101,20 @@
   source aarch64/humble/install/setup.bash
   
   # 启动桥接节点
-  ros2 launch mrosbridger mrosbridger.launch.
+  ros2 launch mrosbridger mrosbridger.launch
+  ```
+
+- ROS2 Jazzy
+
+  ```
+  # 加载 ROS 环境
+  source /opt/ros/jazzy/setup.bash
+  
+  # 加载 ros2_bridger 安装环境
+  source aarch64/jazzy/install/setup.bash
+  
+  # 启动桥接节点
+  ros2 launch mrosbridger mrosbridger.launch
   ```
 
 #### 5. 验证桥接是否生效

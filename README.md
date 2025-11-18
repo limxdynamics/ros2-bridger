@@ -62,6 +62,19 @@ Select the corresponding commands based on the local device architecture and ROS
   ros2 launch mrosbridger mrosbridger.launch.py
   ```
 
+- ROS2 Jazzy
+
+  ```
+  # Load ROS environment
+  source /opt/ros/jazzy/setup.bash
+  
+  # Load ros2_bridger installation environment
+  source amd64/jazzy/install/setup.bash
+  
+  # Launch the bridge node
+  ros2 launch mrosbridger mrosbridger.launch.py
+  ```
+
 ##### 4.2 aarch64 Architecture
 
 - ROS2 Foxy
@@ -85,6 +98,19 @@ Select the corresponding commands based on the local device architecture and ROS
   
   # Load ros2_bridger installation environment
   source aarch64/humble/install/setup.bash
+  
+  # Launch the bridge node
+  ros2 launch mrosbridger mrosbridger.launch.py
+  ```
+
+- ROS2 Jazzy
+
+  ```
+  # Load ROS environment
+  source /opt/ros/jazzy/setup.bash
+  
+  # Load ros2_bridger installation environment
+  source aarch64/jazzy/install/setup.bash
   
   # Launch the bridge node
   ros2 launch mrosbridger mrosbridger.launch.py
