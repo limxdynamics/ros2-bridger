@@ -4,8 +4,3 @@ upper_body.egg-info/PKG-INFO
 upper_body.egg-info/SOURCES.txt
 upper_body.egg-info/dependency_links.txt
 upper_body.egg-info/top_level.txt
-upper_body/msg/__init__.py
-upper_body/msg/_arm_servo.py
-upper_body/msg/_arm_status.py
-upper_body/msg/_servo_j.py
-upper_body/msg/_waist_cmd.py
