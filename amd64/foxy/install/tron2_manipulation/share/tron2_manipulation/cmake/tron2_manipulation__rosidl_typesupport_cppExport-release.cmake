@@ -12,8 +12,8 @@ set_target_properties(tron2_manipulation::tron2_manipulation__rosidl_typesupport
   IMPORTED_SONAME_RELEASE "libtron2_manipulation__rosidl_typesupport_cpp.so"
   )
 
-list(APPEND _IMPORT_CHECK_TARGETS tron2_manipulation::tron2_manipulation__rosidl_typesupport_cpp )
-list(APPEND _IMPORT_CHECK_FILES_FOR_tron2_manipulation::tron2_manipulation__rosidl_typesupport_cpp "${_IMPORT_PREFIX}/lib/libtron2_manipulation__rosidl_typesupport_cpp.so" )
+list(APPEND _cmake_import_check_targets tron2_manipulation::tron2_manipulation__rosidl_typesupport_cpp )
+list(APPEND _cmake_import_check_files_for_tron2_manipulation::tron2_manipulation__rosidl_typesupport_cpp "${_IMPORT_PREFIX}/lib/libtron2_manipulation__rosidl_typesupport_cpp.so" )
 
 # Commands beyond this point should not need to know the version.
 set(CMAKE_IMPORT_FILE_VERSION)

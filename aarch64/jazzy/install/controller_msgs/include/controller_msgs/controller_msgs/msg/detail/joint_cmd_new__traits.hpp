@@ -1,0 +1,436 @@
+// generated from rosidl_generator_cpp/resource/idl__traits.hpp.em
+// with input from controller_msgs:msg/JointCmdNew.idl
+// generated code does not contain a copyright notice
+
+// IWYU pragma: private, include "controller_msgs/msg/joint_cmd_new.hpp"
+
+
+#ifndef CONTROLLER_MSGS__MSG__DETAIL__JOINT_CMD_NEW__TRAITS_HPP_
+#define CONTROLLER_MSGS__MSG__DETAIL__JOINT_CMD_NEW__TRAITS_HPP_
+
+#include <stdint.h>
+
+#include <sstream>
+#include <string>
+#include <type_traits>
+
+#include "controller_msgs/msg/detail/joint_cmd_new__struct.hpp"
+#include "rosidl_runtime_cpp/traits.hpp"
+
+// Include directives for member types
+// Member 'header'
+#include "std_msgs/msg/detail/header__traits.hpp"
+
+namespace controller_msgs
+{
+
+namespace msg
+{
+
+inline void to_flow_style_yaml(
+  const JointCmdNew & msg,
+  std::ostream & out)
+{
+  out << "{";
+  // member: header
+  {
+    out << "header: ";
+    to_flow_style_yaml(msg.header, out);
+    out << ", ";
+  }
+
+  // member: names
+  {
+    if (msg.names.size() == 0) {
+      out << "names: []";
+    } else {
+      out << "names: [";
+      size_t pending_items = msg.names.size();
+      for (auto item : msg.names) {
+        rosidl_generator_traits::value_to_yaml(item, out);
+        if (--pending_items > 0) {
+          out << ", ";
+        }
+      }
+      out << "]";
+    }
+    out << ", ";
+  }
+
+  // member: q
+  {
+    if (msg.q.size() == 0) {
+      out << "q: []";
+    } else {
+      out << "q: [";
+      size_t pending_items = msg.q.size();
+      for (auto item : msg.q) {
+        rosidl_generator_traits::value_to_yaml(item, out);
+        if (--pending_items > 0) {
+          out << ", ";
+        }
+      }
+      out << "]";
+    }
+    out << ", ";
+  }
+
+  // member: v
+  {
+    if (msg.v.size() == 0) {
+      out << "v: []";
+    } else {
+      out << "v: [";
+      size_t pending_items = msg.v.size();
+      for (auto item : msg.v) {
+        rosidl_generator_traits::value_to_yaml(item, out);
+        if (--pending_items > 0) {
+          out << ", ";
+        }
+      }
+      out << "]";
+    }
+    out << ", ";
+  }
+
+  // member: tau
+  {
+    if (msg.tau.size() == 0) {
+      out << "tau: []";
+    } else {
+      out << "tau: [";
+      size_t pending_items = msg.tau.size();
+      for (auto item : msg.tau) {
+        rosidl_generator_traits::value_to_yaml(item, out);
+        if (--pending_items > 0) {
+          out << ", ";
+        }
+      }
+      out << "]";
+    }
+    out << ", ";
+  }
+
+  // member: kp
+  {
+    if (msg.kp.size() == 0) {
+      out << "kp: []";
+    } else {
+      out << "kp: [";
+      size_t pending_items = msg.kp.size();
+      for (auto item : msg.kp) {
+        rosidl_generator_traits::value_to_yaml(item, out);
+        if (--pending_items > 0) {
+          out << ", ";
+        }
+      }
+      out << "]";
+    }
+    out << ", ";
+  }
+
+  // member: kd
+  {
+    if (msg.kd.size() == 0) {
+      out << "kd: []";
+    } else {
+      out << "kd: [";
+      size_t pending_items = msg.kd.size();
+      for (auto item : msg.kd) {
+        rosidl_generator_traits::value_to_yaml(item, out);
+        if (--pending_items > 0) {
+          out << ", ";
+        }
+      }
+      out << "]";
+    }
+    out << ", ";
+  }
+
+  // member: mode
+  {
+    if (msg.mode.size() == 0) {
+      out << "mode: []";
+    } else {
+      out << "mode: [";
+      size_t pending_items = msg.mode.size();
+      for (auto item : msg.mode) {
+        rosidl_generator_traits::value_to_yaml(item, out);
+        if (--pending_items > 0) {
+          out << ", ";
+        }
+      }
+      out << "]";
+    }
+    out << ", ";
+  }
+
+  // member: na
+  {
+    out << "na: ";
+    rosidl_generator_traits::value_to_yaml(msg.na, out);
+    out << ", ";
+  }
+
+  // member: parallel_solve_required
+  {
+    if (msg.parallel_solve_required.size() == 0) {
+      out << "parallel_solve_required: []";
+    } else {
+      out << "parallel_solve_required: [";
+      size_t pending_items = msg.parallel_solve_required.size();
+      for (auto item : msg.parallel_solve_required) {
+        rosidl_generator_traits::value_to_yaml(item, out);
+        if (--pending_items > 0) {
+          out << ", ";
+        }
+      }
+      out << "]";
+    }
+  }
+  out << "}";
+}  // NOLINT(readability/fn_size)
+
+inline void to_block_style_yaml(
+  const JointCmdNew & msg,
+  std::ostream & out, size_t indentation = 0)
+{
+  // member: header
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "header:\n";
+    to_block_style_yaml(msg.header, out, indentation + 2);
+  }
+
+  // member: names
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    if (msg.names.size() == 0) {
+      out << "names: []\n";
+    } else {
+      out << "names:\n";
+      for (auto item : msg.names) {
+        if (indentation > 0) {
+          out << std::string(indentation, ' ');
+        }
+        out << "- ";
+        rosidl_generator_traits::value_to_yaml(item, out);
+        out << "\n";
+      }
+    }
+  }
+
+  // member: q
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    if (msg.q.size() == 0) {
+      out << "q: []\n";
+    } else {
+      out << "q:\n";
+      for (auto item : msg.q) {
+        if (indentation > 0) {
+          out << std::string(indentation, ' ');
+        }
+        out << "- ";
+        rosidl_generator_traits::value_to_yaml(item, out);
+        out << "\n";
+      }
+    }
+  }
+
+  // member: v
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    if (msg.v.size() == 0) {
+      out << "v: []\n";
+    } else {
+      out << "v:\n";
+      for (auto item : msg.v) {
+        if (indentation > 0) {
+          out << std::string(indentation, ' ');
+        }
+        out << "- ";
+        rosidl_generator_traits::value_to_yaml(item, out);
+        out << "\n";
+      }
+    }
+  }
+
+  // member: tau
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    if (msg.tau.size() == 0) {
+      out << "tau: []\n";
+    } else {
+      out << "tau:\n";
+      for (auto item : msg.tau) {
+        if (indentation > 0) {
+          out << std::string(indentation, ' ');
+        }
+        out << "- ";
+        rosidl_generator_traits::value_to_yaml(item, out);
+        out << "\n";
+      }
+    }
+  }
+
+  // member: kp
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    if (msg.kp.size() == 0) {
+      out << "kp: []\n";
+    } else {
+      out << "kp:\n";
+      for (auto item : msg.kp) {
+        if (indentation > 0) {
+          out << std::string(indentation, ' ');
+        }
+        out << "- ";
+        rosidl_generator_traits::value_to_yaml(item, out);
+        out << "\n";
+      }
+    }
+  }
+
+  // member: kd
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    if (msg.kd.size() == 0) {
+      out << "kd: []\n";
+    } else {
+      out << "kd:\n";
+      for (auto item : msg.kd) {
+        if (indentation > 0) {
+          out << std::string(indentation, ' ');
+        }
+        out << "- ";
+        rosidl_generator_traits::value_to_yaml(item, out);
+        out << "\n";
+      }
+    }
+  }
+
+  // member: mode
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    if (msg.mode.size() == 0) {
+      out << "mode: []\n";
+    } else {
+      out << "mode:\n";
+      for (auto item : msg.mode) {
+        if (indentation > 0) {
+          out << std::string(indentation, ' ');
+        }
+        out << "- ";
+        rosidl_generator_traits::value_to_yaml(item, out);
+        out << "\n";
+      }
+    }
+  }
+
+  // member: na
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "na: ";
+    rosidl_generator_traits::value_to_yaml(msg.na, out);
+    out << "\n";
+  }
+
+  // member: parallel_solve_required
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    if (msg.parallel_solve_required.size() == 0) {
+      out << "parallel_solve_required: []\n";
+    } else {
+      out << "parallel_solve_required:\n";
+      for (auto item : msg.parallel_solve_required) {
+        if (indentation > 0) {
+          out << std::string(indentation, ' ');
+        }
+        out << "- ";
+        rosidl_generator_traits::value_to_yaml(item, out);
+        out << "\n";
+      }
+    }
+  }
+}  // NOLINT(readability/fn_size)
+
+inline std::string to_yaml(const JointCmdNew & msg, bool use_flow_style = false)
+{
+  std::ostringstream out;
+  if (use_flow_style) {
+    to_flow_style_yaml(msg, out);
+  } else {
+    to_block_style_yaml(msg, out);
+  }
+  return out.str();
+}
+
+}  // namespace msg
+
+}  // namespace controller_msgs
+
+namespace rosidl_generator_traits
+{
+
+[[deprecated("use controller_msgs::msg::to_block_style_yaml() instead")]]
+inline void to_yaml(
+  const controller_msgs::msg::JointCmdNew & msg,
+  std::ostream & out, size_t indentation = 0)
+{
+  controller_msgs::msg::to_block_style_yaml(msg, out, indentation);
+}
+
+[[deprecated("use controller_msgs::msg::to_yaml() instead")]]
+inline std::string to_yaml(const controller_msgs::msg::JointCmdNew & msg)
+{
+  return controller_msgs::msg::to_yaml(msg);
+}
+
+template<>
+inline const char * data_type<controller_msgs::msg::JointCmdNew>()
+{
+  return "controller_msgs::msg::JointCmdNew";
+}
+
+template<>
+inline const char * name<controller_msgs::msg::JointCmdNew>()
+{
+  return "controller_msgs/msg/JointCmdNew";
+}
+
+template<>
+struct has_fixed_size<controller_msgs::msg::JointCmdNew>
+  : std::integral_constant<bool, false> {};
+
+template<>
+struct has_bounded_size<controller_msgs::msg::JointCmdNew>
+  : std::integral_constant<bool, false> {};
+
+template<>
+struct is_message<controller_msgs::msg::JointCmdNew>
+  : std::true_type {};
+
+}  // namespace rosidl_generator_traits
+
+#endif  // CONTROLLER_MSGS__MSG__DETAIL__JOINT_CMD_NEW__TRAITS_HPP_

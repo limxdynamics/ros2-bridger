@@ -96,8 +96,7 @@ class HandCmd(metaclass=Metaclass_HandCmd):
         if 'ctrl_mode' not in kwargs:
             self.ctrl_mode = numpy.zeros(2, dtype=numpy.uint8)
         else:
-            self.ctrl_mode = numpy.array(kwargs.get('ctrl_mode'), dtype=numpy.uint8)
-            assert self.ctrl_mode.shape == (2, )
+            self.ctrl_mode = kwargs.get('ctrl_mode')
         from hand_msgs.msg import HandMsg
         self.hand_cmd = kwargs.get(
             'hand_cmd',
@@ -137,7 +136,7 @@ class HandCmd(metaclass=Metaclass_HandCmd):
             return False
         if self.hand_type != other.hand_type:
             return False
-        if all(self.ctrl_mode != other.ctrl_mode):
+        if any(self.ctrl_mode != other.ctrl_mode):
             return False
         if self.hand_cmd != other.hand_cmd:
             return False

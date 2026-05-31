@@ -82,13 +82,11 @@ class arm_pose(metaclass=Metaclass_arm_pose):
         if 'left_arm_pos' not in kwargs:
             self.left_arm_pos = numpy.zeros(7, dtype=numpy.float32)
         else:
-            self.left_arm_pos = numpy.array(kwargs.get('left_arm_pos'), dtype=numpy.float32)
-            assert self.left_arm_pos.shape == (7, )
+            self.left_arm_pos = kwargs.get('left_arm_pos')
         if 'right_arm_pos' not in kwargs:
             self.right_arm_pos = numpy.zeros(7, dtype=numpy.float32)
         else:
-            self.right_arm_pos = numpy.array(kwargs.get('right_arm_pos'), dtype=numpy.float32)
-            assert self.right_arm_pos.shape == (7, )
+            self.right_arm_pos = kwargs.get('right_arm_pos')
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -119,9 +117,9 @@ class arm_pose(metaclass=Metaclass_arm_pose):
     def __eq__(self, other):
         if not isinstance(other, self.__class__):
             return False
-        if all(self.left_arm_pos != other.left_arm_pos):
+        if any(self.left_arm_pos != other.left_arm_pos):
             return False
-        if all(self.right_arm_pos != other.right_arm_pos):
+        if any(self.right_arm_pos != other.right_arm_pos):
             return False
         return True
 

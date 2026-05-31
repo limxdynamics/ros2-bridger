@@ -78,8 +78,7 @@ class waist_cmd(metaclass=Metaclass_waist_cmd):
         if 'waistCMD' not in kwargs:
             self.waistCMD = numpy.zeros(3, dtype=numpy.float32)
         else:
-            self.waistCMD = numpy.array(kwargs.get('waistCMD'), dtype=numpy.float32)
-            assert self.waistCMD.shape == (3, )
+            self.waistCMD = kwargs.get('waistCMD')
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -110,7 +109,7 @@ class waist_cmd(metaclass=Metaclass_waist_cmd):
     def __eq__(self, other):
         if not isinstance(other, self.__class__):
             return False
-        if all(self.waistCMD != other.waistCMD):
+        if any(self.waistCMD != other.waistCMD):
             return False
         return True
 

@@ -107,23 +107,19 @@ class IMUData(metaclass=Metaclass_IMUData):
         if 'euler' not in kwargs:
             self.euler = numpy.zeros(3, dtype=numpy.float64)
         else:
-            self.euler = numpy.array(kwargs.get('euler'), dtype=numpy.float64)
-            assert self.euler.shape == (3, )
+            self.euler = kwargs.get('euler')
         if 'quat' not in kwargs:
             self.quat = numpy.zeros(4, dtype=numpy.float64)
         else:
-            self.quat = numpy.array(kwargs.get('quat'), dtype=numpy.float64)
-            assert self.quat.shape == (4, )
+            self.quat = kwargs.get('quat')
         if 'acc' not in kwargs:
             self.acc = numpy.zeros(3, dtype=numpy.float64)
         else:
-            self.acc = numpy.array(kwargs.get('acc'), dtype=numpy.float64)
-            assert self.acc.shape == (3, )
+            self.acc = kwargs.get('acc')
         if 'gyro' not in kwargs:
             self.gyro = numpy.zeros(3, dtype=numpy.float64)
         else:
-            self.gyro = numpy.array(kwargs.get('gyro'), dtype=numpy.float64)
-            assert self.gyro.shape == (3, )
+            self.gyro = kwargs.get('gyro')
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -160,13 +156,13 @@ class IMUData(metaclass=Metaclass_IMUData):
             return False
         if self.status != other.status:
             return False
-        if all(self.euler != other.euler):
+        if any(self.euler != other.euler):
             return False
-        if all(self.quat != other.quat):
+        if any(self.quat != other.quat):
             return False
-        if all(self.acc != other.acc):
+        if any(self.acc != other.acc):
             return False
-        if all(self.gyro != other.gyro):
+        if any(self.gyro != other.gyro):
             return False
         return True
 
