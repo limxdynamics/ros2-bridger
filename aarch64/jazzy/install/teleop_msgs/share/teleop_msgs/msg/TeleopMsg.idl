@@ -1,0 +1,22 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from teleop_msgs/msg/TeleopMsg.msg
+// generated code does not contain a copyright notice
+
+#include "controller_msgs/msg/JointCmd.idl"
+#include "geometry_msgs/msg/Pose.idl"
+#include "std_msgs/msg/Header.idl"
+#include "teleop_msgs/msg/KeyPoint.idl"
+
+module teleop_msgs {
+  module msg {
+    struct TeleopMsg {
+      std_msgs::msg::Header header;
+
+      geometry_msgs::msg::Pose world;
+
+      sequence<teleop_msgs::msg::KeyPoint> anchors;
+
+      controller_msgs::msg::JointCmd joint_cmd;
+    };
+  };
+};

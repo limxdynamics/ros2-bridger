@@ -1,0 +1,91 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from teleop_msgs/msg/VRState.msg
+// generated code does not contain a copyright notice
+
+#include "std_msgs/msg/Header.idl"
+
+module teleop_msgs {
+  module msg {
+    typedef float float__16[16];
+    typedef float float__2[2];
+    struct VRState {
+      std_msgs::msg::Header header;
+
+      @verbatim (language="comment", text=
+        " 眼镜位置姿态矩阵 4x4")
+      float__16 eyePose;
+
+      @verbatim (language="comment", text=
+        " 左手柄姿态矩阵 4x4")
+      float__16 l;
+
+      @verbatim (language="comment", text=
+        " 右手柄姿态矩阵 4x4")
+      float__16 r;
+
+      @verbatim (language="comment", text=
+        " 左摇杆")
+      float__2 leftJS;
+
+      @verbatim (language="comment", text=
+        " 左扳机")
+      float leftTrig;
+
+      @verbatim (language="comment", text=
+        " 左 Grip 键")
+      float leftGrip;
+
+      @verbatim (language="comment", text=
+        " 左拇指（布尔值）")
+      boolean LThU;
+
+      @verbatim (language="comment", text=
+        " 左扳机（布尔值）")
+      boolean LTr;
+
+      @verbatim (language="comment", text=
+        " 左 Grip 键（布尔值）")
+      boolean LG;
+
+      @verbatim (language="comment", text=
+        " X 键")
+      boolean X;
+
+      @verbatim (language="comment", text=
+        " Y 键")
+      boolean Y;
+
+      @verbatim (language="comment", text=
+        " 右摇杆")
+      float__2 rightJS;
+
+      @verbatim (language="comment", text=
+        " 右扳机")
+      float rightTrig;
+
+      @verbatim (language="comment", text=
+        " 右 Grip 键")
+      float rightGrip;
+
+      @verbatim (language="comment", text=
+        " 右拇指（布尔值）")
+      boolean RThU;
+
+      @verbatim (language="comment", text=
+        " 右扳机（布尔值）")
+      boolean RTr;
+
+      @verbatim (language="comment", text=
+        " 右 Grip 键（布尔值）")
+      boolean RG;
+
+      @verbatim (language="comment", text=
+        " A 键")
+      boolean A;
+
+      @verbatim (language="comment", text=
+        " B 键")
+      boolean B;
+    };
+  };
+};

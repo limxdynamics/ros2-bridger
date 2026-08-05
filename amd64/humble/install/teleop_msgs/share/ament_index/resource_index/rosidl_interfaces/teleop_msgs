@@ -1,0 +1,6 @@
+msg/KeyPoint.idl
+msg/KeyPoint.msg
+msg/TeleopMsg.idl
+msg/TeleopMsg.msg
+msg/VRState.idl
+msg/VRState.msg

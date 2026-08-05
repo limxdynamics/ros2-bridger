@@ -1,0 +1,49 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from limx_arm_msgs/msg/JointSet.msg
+// generated code does not contain a copyright notice
+
+
+module limx_arm_msgs {
+  module msg {
+    typedef float float__6[6];
+    module JointSet_Constants {
+      @verbatim (language="comment", text=
+        "action")
+      const int32 ACTION_IDLE = 0;
+      const int32 ACTION_START = 1;
+      const int32 ACTION_PAUSE = 2;
+      const int32 ACTION_RESUME = 3;
+      const int32 ACTION_STOP = 4;
+      const int32 ACTION_ENABLE_MOTOR = 5;
+      const int32 ACTION_SET_ZERO = 6;
+      const int32 ACTION_SET_LIMIT_MIN = 7;
+      const int32 ACTION_SET_LIMIT_MAX = 8;
+      const int32 ACTION_SET_POSITION = 9;
+      const int32 ACTION_SET_MODE = 10;
+      const int32 ACTION_SET_TOOL_SIZE = 11;
+      const int32 ACTION_START_DRAG = 12;
+      const int32 ACTION_STOP_DRAG = 13;
+      const int32 ACTION_PLAYER_START = 14;
+      const int32 ACTION_PLAYER_STOP = 15;
+      const int32 ACTION_SET_CARTESIAN_POSITION = 16;
+      @verbatim (language="comment", text=
+        "01位置控制，03速度模式，04电流模式")
+      const int32 MODE_ANGLE = 1;
+      const int32 MODE_VELOCITY = 3;
+      const int32 MODE_CURRENT = 4;
+    };
+    struct JointSet {
+      int64 stamp;
+
+      string deviceid;
+
+      int32 action;
+
+      int32 mode;
+
+      @verbatim (language="comment", text=
+        "data")
+      float__6 data;
+    };
+  };
+};

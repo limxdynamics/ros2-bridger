@@ -1,0 +1,598 @@
+# generated from rosidl_generator_py/resource/_idl.py.em
+# with input from limx_arm_msgs:msg/JointStatus.idl
+# generated code does not contain a copyright notice
+
+
+# Import statements for member types
+
+import builtins  # noqa: E402, I100
+
+import math  # noqa: E402, I100
+
+# Member 'enable'
+# Member 'zero'
+# Member 'limit_min'
+# Member 'limit_max'
+# Member 'tool_size'
+import numpy  # noqa: E402, I100
+
+import rosidl_parser.definition  # noqa: E402, I100
+
+
+class Metaclass_JointStatus(type):
+    """Metaclass of message 'JointStatus'."""
+
+    _CREATE_ROS_MESSAGE = None
+    _CONVERT_FROM_PY = None
+    _CONVERT_TO_PY = None
+    _DESTROY_ROS_MESSAGE = None
+    _TYPE_SUPPORT = None
+
+    __constants = {
+        'MODE_ANGLE': 1,
+        'MODE_VELOCITY': 3,
+        'MODE_CURRENT': 4,
+        'STATE_IDLE': 1,
+        'STATE_STARTED': 2,
+        'STATE_PAUSED': 3,
+        'STATE_RESUMED': 4,
+        'STATE_STOPED': 5,
+        'STATE_SHUTDOWN': 6,
+        'PLAY_STATE_IDLE': 0,
+        'PLAY_STATE_STARTED': 1,
+        'PLAY_STATE_FAILED': 2,
+        'PLAY_STATE_FINISHED': 3,
+    }
+
+    @classmethod
+    def __import_type_support__(cls):
+        try:
+            from rosidl_generator_py import import_type_support
+            module = import_type_support('limx_arm_msgs')
+        except ImportError:
+            import logging
+            import traceback
+            logger = logging.getLogger(
+                'limx_arm_msgs.msg.JointStatus')
+            logger.debug(
+                'Failed to import needed modules for type support:\n' +
+                traceback.format_exc())
+        else:
+            cls._CREATE_ROS_MESSAGE = module.create_ros_message_msg__msg__joint_status
+            cls._CONVERT_FROM_PY = module.convert_from_py_msg__msg__joint_status
+            cls._CONVERT_TO_PY = module.convert_to_py_msg__msg__joint_status
+            cls._TYPE_SUPPORT = module.type_support_msg__msg__joint_status
+            cls._DESTROY_ROS_MESSAGE = module.destroy_ros_message_msg__msg__joint_status
+
+    @classmethod
+    def __prepare__(cls, name, bases, **kwargs):
+        # list constant names here so that they appear in the help text of
+        # the message class under "Data and other attributes defined here:"
+        # as well as populate each message instance
+        return {
+            'MODE_ANGLE': cls.__constants['MODE_ANGLE'],
+            'MODE_VELOCITY': cls.__constants['MODE_VELOCITY'],
+            'MODE_CURRENT': cls.__constants['MODE_CURRENT'],
+            'STATE_IDLE': cls.__constants['STATE_IDLE'],
+            'STATE_STARTED': cls.__constants['STATE_STARTED'],
+            'STATE_PAUSED': cls.__constants['STATE_PAUSED'],
+            'STATE_RESUMED': cls.__constants['STATE_RESUMED'],
+            'STATE_STOPED': cls.__constants['STATE_STOPED'],
+            'STATE_SHUTDOWN': cls.__constants['STATE_SHUTDOWN'],
+            'PLAY_STATE_IDLE': cls.__constants['PLAY_STATE_IDLE'],
+            'PLAY_STATE_STARTED': cls.__constants['PLAY_STATE_STARTED'],
+            'PLAY_STATE_FAILED': cls.__constants['PLAY_STATE_FAILED'],
+            'PLAY_STATE_FINISHED': cls.__constants['PLAY_STATE_FINISHED'],
+        }
+
+    @property
+    def MODE_ANGLE(self):
+        """Message constant 'MODE_ANGLE'."""
+        return Metaclass_JointStatus.__constants['MODE_ANGLE']
+
+    @property
+    def MODE_VELOCITY(self):
+        """Message constant 'MODE_VELOCITY'."""
+        return Metaclass_JointStatus.__constants['MODE_VELOCITY']
+
+    @property
+    def MODE_CURRENT(self):
+        """Message constant 'MODE_CURRENT'."""
+        return Metaclass_JointStatus.__constants['MODE_CURRENT']
+
+    @property
+    def STATE_IDLE(self):
+        """Message constant 'STATE_IDLE'."""
+        return Metaclass_JointStatus.__constants['STATE_IDLE']
+
+    @property
+    def STATE_STARTED(self):
+        """Message constant 'STATE_STARTED'."""
+        return Metaclass_JointStatus.__constants['STATE_STARTED']
+
+    @property
+    def STATE_PAUSED(self):
+        """Message constant 'STATE_PAUSED'."""
+        return Metaclass_JointStatus.__constants['STATE_PAUSED']
+
+    @property
+    def STATE_RESUMED(self):
+        """Message constant 'STATE_RESUMED'."""
+        return Metaclass_JointStatus.__constants['STATE_RESUMED']
+
+    @property
+    def STATE_STOPED(self):
+        """Message constant 'STATE_STOPED'."""
+        return Metaclass_JointStatus.__constants['STATE_STOPED']
+
+    @property
+    def STATE_SHUTDOWN(self):
+        """Message constant 'STATE_SHUTDOWN'."""
+        return Metaclass_JointStatus.__constants['STATE_SHUTDOWN']
+
+    @property
+    def PLAY_STATE_IDLE(self):
+        """Message constant 'PLAY_STATE_IDLE'."""
+        return Metaclass_JointStatus.__constants['PLAY_STATE_IDLE']
+
+    @property
+    def PLAY_STATE_STARTED(self):
+        """Message constant 'PLAY_STATE_STARTED'."""
+        return Metaclass_JointStatus.__constants['PLAY_STATE_STARTED']
+
+    @property
+    def PLAY_STATE_FAILED(self):
+        """Message constant 'PLAY_STATE_FAILED'."""
+        return Metaclass_JointStatus.__constants['PLAY_STATE_FAILED']
+
+    @property
+    def PLAY_STATE_FINISHED(self):
+        """Message constant 'PLAY_STATE_FINISHED'."""
+        return Metaclass_JointStatus.__constants['PLAY_STATE_FINISHED']
+
+
+class JointStatus(metaclass=Metaclass_JointStatus):
+    """
+    Message class 'JointStatus'.
+
+    Constants:
+      MODE_ANGLE
+      MODE_VELOCITY
+      MODE_CURRENT
+      STATE_IDLE
+      STATE_STARTED
+      STATE_PAUSED
+      STATE_RESUMED
+      STATE_STOPED
+      STATE_SHUTDOWN
+      PLAY_STATE_IDLE
+      PLAY_STATE_STARTED
+      PLAY_STATE_FAILED
+      PLAY_STATE_FINISHED
+    """
+
+    __slots__ = [
+        '_stamp',
+        '_deviceid',
+        '_run_time',
+        '_enable',
+        '_error',
+        '_zero',
+        '_limit_min',
+        '_limit_max',
+        '_tool_size',
+        '_mode',
+        '_state',
+        '_play_state',
+        '_log_path',
+    ]
+
+    _fields_and_field_types = {
+        'stamp': 'int64',
+        'deviceid': 'string',
+        'run_time': 'int64',
+        'enable': 'int32[6]',
+        'error': 'string[6]',
+        'zero': 'float[6]',
+        'limit_min': 'float[6]',
+        'limit_max': 'float[6]',
+        'tool_size': 'float[3]',
+        'mode': 'int32',
+        'state': 'int32',
+        'play_state': 'int32',
+        'log_path': 'string',
+    }
+
+    SLOT_TYPES = (
+        rosidl_parser.definition.BasicType('int64'),  # noqa: E501
+        rosidl_parser.definition.UnboundedString(),  # noqa: E501
+        rosidl_parser.definition.BasicType('int64'),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('int32'), 6),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.UnboundedString(), 6),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 6),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 6),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 6),  # noqa: E501
+        rosidl_parser.definition.Array(rosidl_parser.definition.BasicType('float'), 3),  # noqa: E501
+        rosidl_parser.definition.BasicType('int32'),  # noqa: E501
+        rosidl_parser.definition.BasicType('int32'),  # noqa: E501
+        rosidl_parser.definition.BasicType('int32'),  # noqa: E501
+        rosidl_parser.definition.UnboundedString(),  # noqa: E501
+    )
+
+    def __init__(self, **kwargs):
+        assert all('_' + key in self.__slots__ for key in kwargs.keys()), \
+            'Invalid arguments passed to constructor: %s' % \
+            ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
+        self.stamp = kwargs.get('stamp', int())
+        self.deviceid = kwargs.get('deviceid', str())
+        self.run_time = kwargs.get('run_time', int())
+        if 'enable' not in kwargs:
+            self.enable = numpy.zeros(6, dtype=numpy.int32)
+        else:
+            self.enable = kwargs.get('enable')
+        self.error = kwargs.get(
+            'error',
+            [str() for x in range(6)]
+        )
+        if 'zero' not in kwargs:
+            self.zero = numpy.zeros(6, dtype=numpy.float32)
+        else:
+            self.zero = kwargs.get('zero')
+        if 'limit_min' not in kwargs:
+            self.limit_min = numpy.zeros(6, dtype=numpy.float32)
+        else:
+            self.limit_min = kwargs.get('limit_min')
+        if 'limit_max' not in kwargs:
+            self.limit_max = numpy.zeros(6, dtype=numpy.float32)
+        else:
+            self.limit_max = kwargs.get('limit_max')
+        if 'tool_size' not in kwargs:
+            self.tool_size = numpy.zeros(3, dtype=numpy.float32)
+        else:
+            self.tool_size = kwargs.get('tool_size')
+        self.mode = kwargs.get('mode', int())
+        self.state = kwargs.get('state', int())
+        self.play_state = kwargs.get('play_state', int())
+        self.log_path = kwargs.get('log_path', str())
+
+    def __repr__(self):
+        typename = self.__class__.__module__.split('.')
+        typename.pop()
+        typename.append(self.__class__.__name__)
+        args = []
+        for s, t in zip(self.__slots__, self.SLOT_TYPES):
+            field = getattr(self, s)
+            fieldstr = repr(field)
+            # We use Python array type for fields that can be directly stored
+            # in them, and "normal" sequences for everything else.  If it is
+            # a type that we store in an array, strip off the 'array' portion.
+            if (
+                isinstance(t, rosidl_parser.definition.AbstractSequence) and
+                isinstance(t.value_type, rosidl_parser.definition.BasicType) and
+                t.value_type.typename in ['float', 'double', 'int8', 'uint8', 'int16', 'uint16', 'int32', 'uint32', 'int64', 'uint64']
+            ):
+                if len(field) == 0:
+                    fieldstr = '[]'
+                else:
+                    assert fieldstr.startswith('array(')
+                    prefix = "array('X', "
+                    suffix = ')'
+                    fieldstr = fieldstr[len(prefix):-len(suffix)]
+            args.append(s[1:] + '=' + fieldstr)
+        return '%s(%s)' % ('.'.join(typename), ', '.join(args))
+
+    def __eq__(self, other):
+        if not isinstance(other, self.__class__):
+            return False
+        if self.stamp != other.stamp:
+            return False
+        if self.deviceid != other.deviceid:
+            return False
+        if self.run_time != other.run_time:
+            return False
+        if any(self.enable != other.enable):
+            return False
+        if self.error != other.error:
+            return False
+        if any(self.zero != other.zero):
+            return False
+        if any(self.limit_min != other.limit_min):
+            return False
+        if any(self.limit_max != other.limit_max):
+            return False
+        if any(self.tool_size != other.tool_size):
+            return False
+        if self.mode != other.mode:
+            return False
+        if self.state != other.state:
+            return False
+        if self.play_state != other.play_state:
+            return False
+        if self.log_path != other.log_path:
+            return False
+        return True
+
+    @classmethod
+    def get_fields_and_field_types(cls):
+        from copy import copy
+        return copy(cls._fields_and_field_types)
+
+    @builtins.property
+    def stamp(self):
+        """Message field 'stamp'."""
+        return self._stamp
+
+    @stamp.setter
+    def stamp(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'stamp' field must be of type 'int'"
+            assert value >= -9223372036854775808 and value < 9223372036854775808, \
+                "The 'stamp' field must be an integer in [-9223372036854775808, 9223372036854775807]"
+        self._stamp = value
+
+    @builtins.property
+    def deviceid(self):
+        """Message field 'deviceid'."""
+        return self._deviceid
+
+    @deviceid.setter
+    def deviceid(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, str), \
+                "The 'deviceid' field must be of type 'str'"
+        self._deviceid = value
+
+    @builtins.property
+    def run_time(self):
+        """Message field 'run_time'."""
+        return self._run_time
+
+    @run_time.setter
+    def run_time(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'run_time' field must be of type 'int'"
+            assert value >= -9223372036854775808 and value < 9223372036854775808, \
+                "The 'run_time' field must be an integer in [-9223372036854775808, 9223372036854775807]"
+        self._run_time = value
+
+    @builtins.property
+    def enable(self):
+        """Message field 'enable'."""
+        return self._enable
+
+    @enable.setter
+    def enable(self, value):
+        if isinstance(value, numpy.ndarray):
+            assert value.dtype == numpy.int32, \
+                "The 'enable' numpy.ndarray() must have the dtype of 'numpy.int32'"
+            assert value.size == 6, \
+                "The 'enable' numpy.ndarray() must have a size of 6"
+            self._enable = value
+            return
+        if __debug__:
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
+            assert \
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 len(value) == 6 and
+                 all(isinstance(v, int) for v in value) and
+                 all(val >= -2147483648 and val < 2147483648 for val in value)), \
+                "The 'enable' field must be a set or sequence with length 6 and each value of type 'int' and each integer in [-2147483648, 2147483647]"
+        self._enable = numpy.array(value, dtype=numpy.int32)
+
+    @builtins.property
+    def error(self):
+        """Message field 'error'."""
+        return self._error
+
+    @error.setter
+    def error(self, value):
+        if __debug__:
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
+            assert \
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 len(value) == 6 and
+                 all(isinstance(v, str) for v in value) and
+                 True), \
+                "The 'error' field must be a set or sequence with length 6 and each value of type 'str'"
+        self._error = value
+
+    @builtins.property
+    def zero(self):
+        """Message field 'zero'."""
+        return self._zero
+
+    @zero.setter
+    def zero(self, value):
+        if isinstance(value, numpy.ndarray):
+            assert value.dtype == numpy.float32, \
+                "The 'zero' numpy.ndarray() must have the dtype of 'numpy.float32'"
+            assert value.size == 6, \
+                "The 'zero' numpy.ndarray() must have a size of 6"
+            self._zero = value
+            return
+        if __debug__:
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
+            assert \
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 len(value) == 6 and
+                 all(isinstance(v, float) for v in value) and
+                 all(not (val < -3.402823466e+38 or val > 3.402823466e+38) or math.isinf(val) for val in value)), \
+                "The 'zero' field must be a set or sequence with length 6 and each value of type 'float' and each float in [-340282346600000016151267322115014000640.000000, 340282346600000016151267322115014000640.000000]"
+        self._zero = numpy.array(value, dtype=numpy.float32)
+
+    @builtins.property
+    def limit_min(self):
+        """Message field 'limit_min'."""
+        return self._limit_min
+
+    @limit_min.setter
+    def limit_min(self, value):
+        if isinstance(value, numpy.ndarray):
+            assert value.dtype == numpy.float32, \
+                "The 'limit_min' numpy.ndarray() must have the dtype of 'numpy.float32'"
+            assert value.size == 6, \
+                "The 'limit_min' numpy.ndarray() must have a size of 6"
+            self._limit_min = value
+            return
+        if __debug__:
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
+            assert \
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 len(value) == 6 and
+                 all(isinstance(v, float) for v in value) and
+                 all(not (val < -3.402823466e+38 or val > 3.402823466e+38) or math.isinf(val) for val in value)), \
+                "The 'limit_min' field must be a set or sequence with length 6 and each value of type 'float' and each float in [-340282346600000016151267322115014000640.000000, 340282346600000016151267322115014000640.000000]"
+        self._limit_min = numpy.array(value, dtype=numpy.float32)
+
+    @builtins.property
+    def limit_max(self):
+        """Message field 'limit_max'."""
+        return self._limit_max
+
+    @limit_max.setter
+    def limit_max(self, value):
+        if isinstance(value, numpy.ndarray):
+            assert value.dtype == numpy.float32, \
+                "The 'limit_max' numpy.ndarray() must have the dtype of 'numpy.float32'"
+            assert value.size == 6, \
+                "The 'limit_max' numpy.ndarray() must have a size of 6"
+            self._limit_max = value
+            return
+        if __debug__:
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
+            assert \
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 len(value) == 6 and
+                 all(isinstance(v, float) for v in value) and
+                 all(not (val < -3.402823466e+38 or val > 3.402823466e+38) or math.isinf(val) for val in value)), \
+                "The 'limit_max' field must be a set or sequence with length 6 and each value of type 'float' and each float in [-340282346600000016151267322115014000640.000000, 340282346600000016151267322115014000640.000000]"
+        self._limit_max = numpy.array(value, dtype=numpy.float32)
+
+    @builtins.property
+    def tool_size(self):
+        """Message field 'tool_size'."""
+        return self._tool_size
+
+    @tool_size.setter
+    def tool_size(self, value):
+        if isinstance(value, numpy.ndarray):
+            assert value.dtype == numpy.float32, \
+                "The 'tool_size' numpy.ndarray() must have the dtype of 'numpy.float32'"
+            assert value.size == 3, \
+                "The 'tool_size' numpy.ndarray() must have a size of 3"
+            self._tool_size = value
+            return
+        if __debug__:
+            from collections.abc import Sequence
+            from collections.abc import Set
+            from collections import UserList
+            from collections import UserString
+            assert \
+                ((isinstance(value, Sequence) or
+                  isinstance(value, Set) or
+                  isinstance(value, UserList)) and
+                 not isinstance(value, str) and
+                 not isinstance(value, UserString) and
+                 len(value) == 3 and
+                 all(isinstance(v, float) for v in value) and
+                 all(not (val < -3.402823466e+38 or val > 3.402823466e+38) or math.isinf(val) for val in value)), \
+                "The 'tool_size' field must be a set or sequence with length 3 and each value of type 'float' and each float in [-340282346600000016151267322115014000640.000000, 340282346600000016151267322115014000640.000000]"
+        self._tool_size = numpy.array(value, dtype=numpy.float32)
+
+    @builtins.property
+    def mode(self):
+        """Message field 'mode'."""
+        return self._mode
+
+    @mode.setter
+    def mode(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'mode' field must be of type 'int'"
+            assert value >= -2147483648 and value < 2147483648, \
+                "The 'mode' field must be an integer in [-2147483648, 2147483647]"
+        self._mode = value
+
+    @builtins.property
+    def state(self):
+        """Message field 'state'."""
+        return self._state
+
+    @state.setter
+    def state(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'state' field must be of type 'int'"
+            assert value >= -2147483648 and value < 2147483648, \
+                "The 'state' field must be an integer in [-2147483648, 2147483647]"
+        self._state = value
+
+    @builtins.property
+    def play_state(self):
+        """Message field 'play_state'."""
+        return self._play_state
+
+    @play_state.setter
+    def play_state(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, int), \
+                "The 'play_state' field must be of type 'int'"
+            assert value >= -2147483648 and value < 2147483648, \
+                "The 'play_state' field must be an integer in [-2147483648, 2147483647]"
+        self._play_state = value
+
+    @builtins.property
+    def log_path(self):
+        """Message field 'log_path'."""
+        return self._log_path
+
+    @log_path.setter
+    def log_path(self, value):
+        if __debug__:
+            assert \
+                isinstance(value, str), \
+                "The 'log_path' field must be of type 'str'"
+        self._log_path = value

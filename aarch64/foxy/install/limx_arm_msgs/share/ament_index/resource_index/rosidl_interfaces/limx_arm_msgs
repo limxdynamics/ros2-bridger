@@ -1,0 +1,10 @@
+msg/JointData.idl
+msg/JointData.msg
+msg/JointSet.idl
+msg/JointSet.msg
+msg/JointStatus.idl
+msg/JointStatus.msg
+msg/ServoCmd.idl
+msg/ServoCmd.msg
+msg/arm_status.idl
+msg/arm_status.msg

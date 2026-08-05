@@ -1,0 +1,27 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from hand_msgs/msg/TactileCmd.msg
+// generated code does not contain a copyright notice
+
+#include "std_msgs/msg/Header.idl"
+
+module hand_msgs {
+  module msg {
+    struct TactileCmd {
+      std_msgs::msg::Header header;
+
+      sequence<string> names;
+
+      @verbatim (language="comment", text=
+        "触觉开关 (true=开启 false=关闭)")
+      sequence<boolean> tactile_switch;
+
+      @verbatim (language="comment", text=
+        "通道复位 (true触发, 执行时手指不可受力)")
+      sequence<boolean> channel_reset;
+
+      @verbatim (language="comment", text=
+        "参数校准 (true触发, 执行约10s内数据不可用, 手指不可受力)")
+      sequence<boolean> calibration_trigger;
+    };
+  };
+};

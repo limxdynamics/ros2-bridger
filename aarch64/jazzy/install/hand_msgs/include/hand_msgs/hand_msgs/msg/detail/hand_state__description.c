@@ -24,8 +24,8 @@ hand_msgs__msg__HandState__get_type_hash(
 
 // Include directives for referenced types
 #include "hand_msgs/msg/detail/hand_msg__functions.h"
-#include "std_msgs/msg/detail/header__functions.h"
 #include "builtin_interfaces/msg/detail/time__functions.h"
+#include "std_msgs/msg/detail/header__functions.h"
 
 // Hashes for external referenced types
 #ifndef NDEBUG

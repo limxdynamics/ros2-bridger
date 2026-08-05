@@ -1,0 +1,12 @@
+// generated from rosidl_generator_cpp/resource/idl.hpp.em
+// generated code does not contain a copyright notice
+
+#ifndef HAND_MSGS__MSG__TACTILE_STATE_HPP_
+#define HAND_MSGS__MSG__TACTILE_STATE_HPP_
+
+#include "hand_msgs/msg/detail/tactile_state__struct.hpp"
+#include "hand_msgs/msg/detail/tactile_state__builder.hpp"
+#include "hand_msgs/msg/detail/tactile_state__traits.hpp"
+#include "hand_msgs/msg/detail/tactile_state__type_support.hpp"
+
+#endif  // HAND_MSGS__MSG__TACTILE_STATE_HPP_
