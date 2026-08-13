@@ -467,6 +467,11 @@ def determine_package_pairs(mros_msgs, ros_msgs, mapping_rules):
     ros_suffixes = ['_msgs', '_interfaces']
     mros_package_names = {m.package_name for m in mros_msgs}
     ros_package_names = {m.package_name for m in ros_msgs}
+
+    for mros_package_name in mros_package_names:
+        if mros_package_name in ros_package_names:
+            pairs.append((mros_package_name, mros_package_name))
+
     for mros_package_name in mros_package_names:
         if not mros_package_name.endswith(mros_suffix):
             continue
@@ -481,7 +486,9 @@ def determine_package_pairs(mros_msgs, ros_msgs, mapping_rules):
             ros_package_basename = ros_package_name[:-len(ros_suffix)]
             if mros_package_basename != ros_package_basename:
                 continue
-            pairs.append((mros_package_name, ros_package_name))
+            pair = (mros_package_name, ros_package_name)
+            if pair not in pairs:
+                pairs.append(pair)
 
     # add manual package mapping rules
     for rule in mapping_rules:
@@ -593,12 +600,11 @@ def determine_common_services(
                 ros_type = str(ros_fields[direction][i].type)
                 mros_name = mros_field[1]
                 ros_name = ros_fields[direction][i].name
-                if mros_type != ros_type or mros_name != ros_name:
-                    # if the message types have a custom mapping their names
-                    # might not be equal, therefore check the message pairs
-                    if (mros_type, ros_type) not in message_string_pairs:
-                        match = False
-                        break
+                type_match = mros_type == ros_type or (mros_type, ros_type) in message_string_pairs
+                name_match = mros_name == ros_name or mros_name.lower() == ros_name.lower()
+                if not type_match or not name_match:
+                    match = False
+                    break
                 output[direction].append({
                     'basic': False if '/' in mros_type else True,
                     'array': True if '[]' in mros_type else False,
@@ -746,7 +752,7 @@ def determine_field_mapping(mros_msg, ros_msg, mapping_rules, msg_idx):
 
     for mros_field in mros_spec.parsed_fields():
         for ros_member in ros_spec.structure.members:
-            if mros_field.name.lower() == ros_member.name:
+            if mros_field.name.lower() == ros_member.name.lower():
                 # get package name and message name from MROS field type
                 update_mros_field_information(mros_field, mros_msg.package_name)
                 mapping.add_field_pair(mros_field, ros_member)
@@ -761,7 +767,7 @@ def determine_field_mapping(mros_msg, ros_msg, mapping_rules, msg_idx):
         # since then it might be the case that those have been renamed and should be mapped
         for ros_member in ros_spec.structure.members:
             for mros_field in mros_spec.parsed_fields():
-                if mros_field.name.lower() == ros_member.name:
+                if mros_field.name.lower() == ros_member.name.lower():
                     break
             else:
                 # if fields from both sides are not mappable the whole message is not mappable

@@ -23,10 +23,10 @@ hand_msgs__msg__TactileHandCmd__get_type_hash(
 #include <string.h>
 
 // Include directives for referenced types
-#include "hand_msgs/msg/detail/hand_msg__functions.h"
-#include "hand_msgs/msg/detail/tactile_cmd__functions.h"
 #include "builtin_interfaces/msg/detail/time__functions.h"
 #include "std_msgs/msg/detail/header__functions.h"
+#include "hand_msgs/msg/detail/tactile_cmd__functions.h"
+#include "hand_msgs/msg/detail/hand_msg__functions.h"
 
 // Hashes for external referenced types
 #ifndef NDEBUG
