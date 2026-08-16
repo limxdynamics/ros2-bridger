@@ -1,6 +1,16 @@
 msg/KeyPoint.idl
 msg/KeyPoint.msg
+msg/TeleopIntentFrame.idl
+msg/TeleopIntentFrame.msg
+msg/TeleopLimbState.idl
+msg/TeleopLimbState.msg
 msg/TeleopMsg.idl
 msg/TeleopMsg.msg
+msg/TeleopRawInput.idl
+msg/TeleopRawInput.msg
+msg/TeleopSessionState.idl
+msg/TeleopSessionState.msg
+msg/TeleopTarget.idl
+msg/TeleopTarget.msg
 msg/VRState.idl
 msg/VRState.msg

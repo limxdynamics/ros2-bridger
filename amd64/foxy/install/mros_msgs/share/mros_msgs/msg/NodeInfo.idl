@@ -1,0 +1,12 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from mros_msgs/msg/NodeInfo.msg
+// generated code does not contain a copyright notice
+
+
+module mros_msgs {
+  module msg {
+    struct NodeInfo {
+      string node_name;
+    };
+  };
+};

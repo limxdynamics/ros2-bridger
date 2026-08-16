@@ -1,0 +1,7 @@
+string functionName
+float32[7] left_arm_pos # [px py pz Qx Qy Qz Qw]
+float32[7] right_arm_pos # [px py pz Qx Qy Qz Qw]
+float32 speed 
+float32[7] left_arm_joints
+float32[7] right_arm_joints  
+float32[2] headPos

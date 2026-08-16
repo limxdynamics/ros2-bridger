@@ -24,9 +24,9 @@ teleop_msgs__msg__TeleopMsg__get_type_hash(
 
 // Include directives for referenced types
 #include "builtin_interfaces/msg/detail/time__functions.h"
+#include "geometry_msgs/msg/detail/point__functions.h"
 #include "geometry_msgs/msg/detail/pose__functions.h"
 #include "controller_msgs/msg/detail/joint_cmd__functions.h"
-#include "geometry_msgs/msg/detail/point__functions.h"
 #include "teleop_msgs/msg/detail/key_point__functions.h"
 #include "geometry_msgs/msg/detail/quaternion__functions.h"
 #include "std_msgs/msg/detail/header__functions.h"

@@ -1,0 +1,22 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from limx_arm_msgs/srv/motion.srv
+// generated code does not contain a copyright notice
+
+
+module limx_arm_msgs {
+  module srv {
+    typedef float float__7[7];
+    struct motion_Request {
+      @unit (value="px py pz Qx Qy Qz Qw")
+      float__7 left_arm_pos;
+
+      @unit (value="px py pz Qx Qy Qz Qw")
+      float__7 right_arm_pos;
+
+      float duration_time;
+    };
+    struct motion_Response {
+      int32 status;
+    };
+  };
+};

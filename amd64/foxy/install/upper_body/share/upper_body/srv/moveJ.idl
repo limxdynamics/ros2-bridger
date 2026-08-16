@@ -1,0 +1,21 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from upper_body/srv/moveJ.srv
+// generated code does not contain a copyright notice
+
+
+module upper_body {
+  module srv {
+    struct moveJ_Request {
+      @verbatim (language="comment", text=
+        " unit: rad")
+      sequence<float> joints;
+
+      @verbatim (language="comment", text=
+        " unit: rad/s")
+      float speed;
+    };
+    struct moveJ_Response {
+      int32 status;
+    };
+  };
+};

@@ -1,0 +1,45 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from upper_body/srv/arm_move.srv
+// generated code does not contain a copyright notice
+
+
+module upper_body {
+  module srv {
+    typedef float float__7[7];
+    @verbatim (language="comment", text=
+      " motion type")
+    struct arm_move_Request {
+      @verbatim (language="comment", text=
+        " moveJ\ moveL\ moveP\ moveWaistArm")
+      string move_type;
+
+      @verbatim (language="comment", text=
+        " moveJ" "\n"
+        " unit: rad")
+      sequence<float> left_arm_joints;
+
+      @verbatim (language="comment", text=
+        " unit: rad")
+      sequence<float> right_arm_joints;
+
+      @verbatim (language="comment", text=
+        " moveL\ moveP" "\n"
+        " [px py pz Qx Qy Qz Qw] unit: m")
+      @unit (value="px py pz Qx Qy Qz Qw")
+      float__7 left_arm_pos;
+
+      @verbatim (language="comment", text=
+        " unit: m")
+      @unit (value="px py pz Qx Qy Qz Qw")
+      float__7 right_arm_pos;
+
+      @verbatim (language="comment", text=
+        " speed" "\n"
+        " unit: rad/s or m/s")
+      float speed;
+    };
+    struct arm_move_Response {
+      int32 status;
+    };
+  };
+};

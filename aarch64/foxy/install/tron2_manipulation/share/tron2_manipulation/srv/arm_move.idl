@@ -1,0 +1,29 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from tron2_manipulation/srv/arm_move.srv
+// generated code does not contain a copyright notice
+
+
+module tron2_manipulation {
+  module srv {
+    typedef float float__7[7];
+    struct arm_move_Request {
+      @verbatim (language="comment", text=
+        " unit: m")
+      @unit (value="px py pz Qx Qy Qz Qw")
+      float__7 left_arm_pos;
+
+      @verbatim (language="comment", text=
+        " unit: m")
+      @unit (value="px py pz Qx Qy Qz Qw")
+      float__7 right_arm_pos;
+
+      @verbatim (language="comment", text=
+        " speed" "\n"
+        " unit: rad/s or m/s")
+      float speed;
+    };
+    struct arm_move_Response {
+      int32 status;
+    };
+  };
+};

@@ -1,0 +1,51 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from teleop_msgs/msg/TeleopRawInput.msg
+// generated code does not contain a copyright notice
+
+
+module teleop_msgs {
+  module msg {
+    typedef float float__2[2];
+    module TeleopRawInput_Constants {
+      const uint32 BTN_LEFT_X = 1;
+      const uint32 BTN_LEFT_Y = 2;
+      const uint32 BTN_RIGHT_A = 4;
+      const uint32 BTN_RIGHT_B = 8;
+      const uint32 BTN_LEFT_STICK = 16;
+      const uint32 BTN_RIGHT_STICK = 32;
+      const uint32 BTN_LEFT_GRIP = 64;
+      const uint32 BTN_RIGHT_GRIP = 128;
+      const uint32 BTN_LEFT_TRIGGER = 256;
+      const uint32 BTN_RIGHT_TRIGGER = 512;
+      const uint32 BTN_LEFT_THUMBREST = 1024;
+      const uint32 BTN_RIGHT_THUMBREST = 2048;
+    };
+    @verbatim (language="comment", text=
+      " 操作者控制器的原始输入量。" "\n"
+      " 发送方不解释任何按键含义，组合键语义一律由接收方解释。")
+    struct TeleopRawInput {
+      @verbatim (language="comment", text=
+        " 模拟量，范围 0.0 ~ 1.0")
+      float left_trigger;
+
+      float right_trigger;
+
+      float left_grip;
+
+      float right_grip;
+
+      @verbatim (language="comment", text=
+        " 摇杆，[x, y]，范围 -1.0 ~ 1.0")
+      float__2 left_stick;
+
+      float__2 right_stick;
+
+      uint32 buttons;
+
+      @verbatim (language="comment", text=
+        " 哪些按键位本帧有效。设备不提供的按键，对应位为 0。" "\n"
+        " 接收方不得把「设备未提供」当成「按键未按下」。")
+      uint32 buttons_valid;
+    };
+  };
+};

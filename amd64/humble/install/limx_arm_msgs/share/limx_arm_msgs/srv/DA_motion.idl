@@ -1,0 +1,31 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from limx_arm_msgs/srv/DA_motion.srv
+// generated code does not contain a copyright notice
+
+
+module limx_arm_msgs {
+  module srv {
+    typedef float float__7[7];
+    typedef float float__2[2];
+    struct DA_motion_Request {
+      string functionName;
+
+      @unit (value="px py pz Qx Qy Qz Qw")
+      float__7 left_arm_pos;
+
+      @unit (value="px py pz Qx Qy Qz Qw")
+      float__7 right_arm_pos;
+
+      float speed;
+
+      float__7 left_arm_joints;
+
+      float__7 right_arm_joints;
+
+      float__2 headPos;
+    };
+    struct DA_motion_Response {
+      int32 status;
+    };
+  };
+};

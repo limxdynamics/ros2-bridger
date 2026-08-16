@@ -1,0 +1,20 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from actionlib/action/TwoInts.action
+// generated code does not contain a copyright notice
+
+
+module actionlib {
+  module action {
+    struct TwoInts_Goal {
+      int64 a;
+
+      int64 b;
+    };
+    struct TwoInts_Result {
+      int64 sum;
+    };
+    struct TwoInts_Feedback {
+      uint8 structure_needs_at_least_one_member;
+    };
+  };
+};

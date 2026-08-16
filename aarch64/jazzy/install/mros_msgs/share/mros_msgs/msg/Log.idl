@@ -1,0 +1,68 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from mros_msgs/msg/Log.msg
+// generated code does not contain a copyright notice
+
+#include "std_msgs/msg/Header.idl"
+
+module mros_msgs {
+  module msg {
+    module Log_Constants {
+      @verbatim (language="comment", text=
+        "debug level")
+      const octet DEBUG = 1;
+      @verbatim (language="comment", text=
+        "general level")
+      const octet INFO = 2;
+      @verbatim (language="comment", text=
+        "warning level")
+      const octet WARN = 4;
+      @verbatim (language="comment", text=
+        "error level")
+      const octet ERROR = 8;
+      @verbatim (language="comment", text=
+        "fatal/critical level")
+      const octet FATAL = 16;
+    };
+    @verbatim (language="comment", text=
+      "Severity level constants")
+    struct Log {
+      @verbatim (language="comment", text=
+        "Fields")
+      std_msgs::msg::Header header;
+
+      octet level;
+
+      @verbatim (language="comment", text=
+        "name of the node")
+      string name;
+
+      @verbatim (language="comment", text=
+        "message")
+      string msg;
+
+      @verbatim (language="comment", text=
+        "file the message came from")
+      string file;
+
+      @verbatim (language="comment", text=
+        "function the message came from")
+      string function;
+
+      @verbatim (language="comment", text=
+        "line the message came from")
+      uint32 line;
+
+      @verbatim (language="comment", text=
+        "topic names that the node publishes")
+      sequence<string> topics;
+
+      @verbatim (language="comment", text=
+        "Process id")
+      uint64 pid;
+
+      @verbatim (language="comment", text=
+        "Thread id")
+      uint64 tid;
+    };
+  };
+};

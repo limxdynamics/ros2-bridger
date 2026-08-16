@@ -56,14 +56,21 @@ def generate_cpp(output_path, template_dir, msgs_dir):
         for m in data['mappings']}
     data.update(
         generate_services(msgs_dir, message_string_pairs=message_string_pairs))
+    data.update(
+        generate_actions(msgs_dir, message_string_pairs=message_string_pairs))
 
     template_file = os.path.join(template_dir, 'get_mappings.cpp.em')
     output_file = os.path.join(output_path, 'get_mappings.cpp')
     data_for_template = {
-        'mappings': data['mappings'], 'services': data['services']}
+        'mappings': data['mappings'],
+        'services': data['services'],
+        'actions': data['actions']}
     expand_template(template_file, data_for_template, output_file)
 
-    unique_package_names = set(data['ros_package_names_msg'] + data['ros_package_names_srv'])
+    unique_package_names = set(
+        data['ros_package_names_msg'] +
+        data['ros_package_names_srv'] +
+        data['ros_package_names_action'])
     # skip builtin_interfaces since there is a custom implementation
     unique_package_names -= {'builtin_interfaces'}
     data['ros_package_names'] = list(unique_package_names)
@@ -82,6 +89,12 @@ def generate_cpp(output_path, template_dir, msgs_dir):
             'mapped_ros_msgs': [
                 m.ros_msg for m in data['mappings']
                 if m.ros_msg.package_name == ros_package_name],
+            'mapped_services': [
+                s for s in data['services']
+                if s['ros_package'] == ros_package_name],
+            'mapped_actions': [
+                a for a in data['actions']
+                if a['ros_package'] == ros_package_name],
             # forward declaration of factory functions
             'ros_msg_types': [
                 m for m in data['all_ros_msgs']
@@ -89,10 +102,19 @@ def generate_cpp(output_path, template_dir, msgs_dir):
             'ros_srv_types': [
                 s for s in data['all_ros_srvs']
                 if s.package_name == ros_package_name],
+            'ros_action_types': [
+                a for a in data['all_ros_actions']
+                if a.package_name == ros_package_name],
             # forward declaration of template specializations
             'mappings': [
                 m for m in data['mappings']
                 if m.ros_msg.package_name == ros_package_name],
+            'services': [
+                s for s in data['services']
+                if s['ros_package'] == ros_package_name],
+            'actions': [
+                a for a in data['actions']
+                if a['ros_package'] == ros_package_name],
         }
         template_file = os.path.join(template_dir, 'pkg_factories.hpp.em')
         output_file = os.path.join(
@@ -104,6 +126,7 @@ def generate_cpp(output_path, template_dir, msgs_dir):
             # call interface specific factory functions
             'ros_msg_types': data_pkg_hpp['ros_msg_types'],
             'ros_srv_types': data_pkg_hpp['ros_srv_types'],
+            'ros_action_types': data_pkg_hpp['ros_action_types'],
         }
         template_file = os.path.join(template_dir, 'pkg_factories.cpp.em')
         output_file = os.path.join(
@@ -111,7 +134,8 @@ def generate_cpp(output_path, template_dir, msgs_dir):
         expand_template(template_file, data_pkg_cpp, output_file)
 
         for interface_type, interfaces in zip(
-            ['msg', 'srv'], [data['all_ros_msgs'], data['all_ros_srvs']]
+            ['msg', 'srv', 'action'],
+            [data['all_ros_msgs'], data['all_ros_srvs'], data['all_ros_actions']]
         ):
             for interface in interfaces:
                 if interface.package_name != ros_package_name:
@@ -122,6 +146,7 @@ def generate_cpp(output_path, template_dir, msgs_dir):
                     'interface': interface,
                     'mapped_msgs': [],
                     'mapped_services': [],
+                    'mapped_actions': [],
                 }
                 if interface_type == 'msg':
                     data_idl_cpp['mapped_msgs'] += [
@@ -133,6 +158,11 @@ def generate_cpp(output_path, template_dir, msgs_dir):
                         s for s in data['services']
                         if s['ros_package'] == ros_package_name and
                         s['ros_name'] == interface.message_name]
+                if interface_type == 'action':
+                    data_idl_cpp['mapped_actions'] += [
+                        a for a in data['actions']
+                        if a['ros_package'] == ros_package_name and
+                        a['ros_name'] == interface.message_name]
                 template_file = os.path.join(template_dir, 'interface_factories.cpp.em')
                 output_file = os.path.join(
                     output_path, '%s__%s__%s__factories.cpp' %
@@ -219,6 +249,20 @@ def generate_services(msgs_dir, message_string_pairs=None):
         'all_ros_srvs': ros_srvs,
     }
 
+
+def generate_actions(msgs_dir, message_string_pairs=None):
+    mros_actions = get_mros_actions(msgs_dir)
+    ros_pkgs, ros_actions, mapping_rules = get_ros_actions()
+    actions = determine_common_actions(
+        mros_actions, ros_actions, mapping_rules,
+        message_string_pairs=message_string_pairs)
+    return {
+        'actions': actions,
+        'ros_package_names_action': ros_pkgs,
+        'all_ros_actions': ros_actions,
+    }
+
+
 def get_mros_messages(msgs_dir):
     mros_msgs = []
     mros_pkgs = []
@@ -290,6 +334,21 @@ def get_mros_services(msgs_dir):
     return mros_srvs
 
 
+def get_mros_actions(msgs_dir):
+    mros_actions = []
+    mros_pkgs = []
+    msgs_path = msgs_dir
+    for pkg in sorted(os.listdir(msgs_path)):
+        pkg_path = msgs_path + "/" + pkg + "/action"
+        mros_pkgs.append((pkg, pkg_path))
+    for package_name, path in mros_pkgs:
+        if os.path.exists(path):
+            for f in os.listdir(path):
+                if f.endswith(".action"):
+                    mros_actions.append(Message(package_name, f[0:-7], path))
+    return mros_actions
+
+
 def get_ros_services():
     pkgs = []
     srvs = []
@@ -330,6 +389,50 @@ def get_ros_services():
                     except Exception as e:
                         print('%s' % str(e), file=sys.stderr)
     return pkgs, srvs, rules
+
+
+def get_ros_actions():
+    pkgs = []
+    actions = []
+    rules = []
+    resource_type = 'rosidl_interfaces'
+    resources = ament_index_python.get_resources(resource_type)
+    for package_name, prefix_path in resources.items():
+        pkgs.append(package_name)
+        resource, _ = ament_index_python.get_resource(resource_type, package_name)
+        interfaces = resource.splitlines()
+        action_names = {
+            os.path.splitext(i[len('action/'):])[0]
+            for i in interfaces
+            if i.startswith('action/') and i.endswith(('.action', '.idl'))}
+
+        for action_name in sorted(action_names):
+            actions.append(Message(package_name, action_name, prefix_path))
+        package_path = os.path.join(prefix_path, 'share', package_name)
+        pkg = parse_package(package_path)
+        for export in pkg.exports:
+            if export.tagname != 'mrosbridger':
+                continue
+            if 'mapping_rules' not in export.attributes:
+                continue
+            rule_file = os.path.join(package_path, export.attributes['mapping_rules'])
+            with open(rule_file, 'r') as h:
+                content = yaml.safe_load(h)
+            if not isinstance(content, list):
+                print(
+                    "The content of the mapping rules in '%s' is not a list" % rule_file,
+                    file=sys.stderr)
+                continue
+            for data in content:
+                if all(n not in data for n in (
+                    'mros_message_name', 'ros_message_name',
+                    'mros_service_name', 'ros_service_name'
+                )):
+                    try:
+                        rules.append(ActionMappingRule(data, package_name))
+                    except Exception as e:
+                        print('%s' % str(e), file=sys.stderr)
+    return pkgs, actions, rules
 
 
 class Message:
@@ -458,6 +561,30 @@ class ServiceMappingRule(MappingRule):
 
     def __str__(self):
         return 'ServiceMappingRule(%s <-> %s)' % (self.mros_package_name, self.ros_package_name)
+
+
+class ActionMappingRule(MappingRule):
+    __slots__ = [
+        'mros_action_name',
+        'ros_action_name',
+    ]
+
+    def __init__(self, data, expected_package_name):
+        super().__init__(data, expected_package_name)
+        self.mros_action_name = None
+        self.ros_action_name = None
+        if all(n in data for n in ('mros_action_name', 'ros_action_name')):
+            self.mros_action_name = data['mros_action_name']
+            self.ros_action_name = data['ros_action_name']
+            if len(data) > 4:
+                raise RuntimeError(
+                    'Mapping for package %s contains unknown field(s)' % self.ros_package_name)
+        elif len(data) > 2:
+            raise RuntimeError(
+                'Mapping for package %s contains unknown field(s)' % self.ros_package_name)
+
+    def __str__(self):
+        return 'ActionMappingRule(%s <-> %s)' % (self.mros_package_name, self.ros_package_name)
 
 
 def determine_package_pairs(mros_msgs, ros_msgs, mapping_rules):
@@ -598,25 +725,39 @@ def determine_common_services(
             for i, mros_field in enumerate(mros_fields[direction]):
                 mros_type = mros_field[0]
                 ros_type = str(ros_fields[direction][i].type)
+                mros_base_type = re.sub(r'\[.*\]$', '', mros_type)
+                ros_base_type = re.sub(r'\[.*\]$', '', ros_type)
+                mros_is_array = re.search(r'\[.*\]$', mros_type) is not None
+                ros_is_array = re.search(r'\[.*\]$', ros_type) is not None
                 mros_name = mros_field[1]
                 ros_name = ros_fields[direction][i].name
-                type_match = mros_type == ros_type or (mros_type, ros_type) in message_string_pairs
+                is_basic = '/' not in mros_base_type and '/' not in ros_base_type
+                type_match = (
+                    mros_is_array == ros_is_array and
+                    (
+                        (is_basic and mros_base_type == ros_base_type) or
+                        (not is_basic and (mros_base_type, ros_base_type) in message_string_pairs)
+                    ))
                 name_match = mros_name == ros_name or mros_name.lower() == ros_name.lower()
                 if not type_match or not name_match:
                     match = False
                     break
+                mros_array_match = re.search(r'\[(.*)\]$', mros_type)
+                ros_array_match = re.search(r'\[(.*)\]$', ros_type)
                 output[direction].append({
                     'basic': False if '/' in mros_type else True,
-                    'array': True if '[]' in mros_type else False,
+                    'array': mros_array_match is not None or ros_array_match is not None,
+                    'dynamic_array': (
+                        mros_array_match is not None and mros_array_match.group(1) == ''),
                     'mros': {
                         'name': mros_name,
-                        'type': mros_type.rstrip('[]'),
-                        'cpptype': mros_type.rstrip('[]').replace('/', '::')
+                        'type': re.sub(r'\[.*\]$', '', mros_type),
+                        'cpptype': re.sub(r'\[.*\]$', '', mros_type).replace('/', '::')
                     },
                     'ros': {
                         'name': ros_name,
-                        'type': ros_type.rstrip('[]'),
-                        'cpptype': ros_type.rstrip('[]').replace('/', '::msg::')
+                        'type': re.sub(r'\[.*\]$', '', ros_type),
+                        'cpptype': re.sub(r'\[.*\]$', '', ros_type).replace('/', '::msg::')
                     }
                 })
         if match:
@@ -628,6 +769,147 @@ def determine_common_services(
                 'fields': output
             })
     return services
+
+
+def determine_common_actions(
+    mros_actions, ros_actions, mapping_rules, message_string_pairs=None
+):
+    if message_string_pairs is None:
+        message_string_pairs = set()
+
+    pairs = []
+    actions = []
+    for mros_action in mros_actions:
+        for ros_action in ros_actions:
+            if mros_action.package_name == ros_action.package_name:
+                if mros_action.message_name == ros_action.message_name:
+                    pairs.append((mros_action, ros_action))
+
+    for rule in mapping_rules:
+        for mros_action in mros_actions:
+            for ros_action in ros_actions:
+                pair = (mros_action, ros_action)
+                if pair in pairs:
+                    continue
+                if rule.mros_package_name == mros_action.package_name and \
+                   rule.ros_package_name == ros_action.package_name:
+                    if rule.mros_action_name is None and rule.ros_action_name is None:
+                        if mros_action.message_name == ros_action.message_name:
+                            pairs.append(pair)
+                    else:
+                        if (
+                            rule.mros_action_name == mros_action.message_name and
+                            rule.ros_action_name == ros_action.message_name
+                        ):
+                            pairs.append(pair)
+
+    for pair in pairs:
+        mros_spec = load_mros_action(pair[0])
+        ros_spec = load_ros_action(pair[1])
+        if not mros_spec or not ros_spec:
+            continue
+
+        mros_fields = {
+            'goal': mros_spec['goal'].fields(),
+            'result': mros_spec['result'].fields(),
+            'feedback': mros_spec['feedback'].fields()
+        }
+        ros_fields = {
+            'goal': ros_spec.goal.fields,
+            'result': ros_spec.result.fields,
+            'feedback': ros_spec.feedback.fields
+        }
+        output = {
+            'goal': [],
+            'result': [],
+            'feedback': []
+        }
+        match = True
+        for direction in ['goal', 'result', 'feedback']:
+            if len(mros_fields[direction]) != len(ros_fields[direction]):
+                match = False
+                break
+            for i, mros_field in enumerate(mros_fields[direction]):
+                mros_type = mros_field[0]
+                ros_type = str(ros_fields[direction][i].type)
+                mros_base_type = re.sub(r'\[.*\]$', '', mros_type)
+                ros_base_type = re.sub(r'\[.*\]$', '', ros_type)
+                mros_is_array = re.search(r'\[.*\]$', mros_type) is not None
+                ros_is_array = re.search(r'\[.*\]$', ros_type) is not None
+                mros_name = mros_field[1]
+                ros_name = ros_fields[direction][i].name
+                is_basic = '/' not in mros_base_type and '/' not in ros_base_type
+                type_match = (
+                    mros_is_array == ros_is_array and
+                    (
+                        (is_basic and mros_base_type == ros_base_type) or
+                        (not is_basic and (mros_base_type, ros_base_type) in message_string_pairs)
+                    ))
+                name_match = mros_name == ros_name or mros_name.lower() == ros_name.lower()
+                if not type_match or not name_match:
+                    match = False
+                    break
+                mros_array_match = re.search(r'\[(.*)\]$', mros_type)
+                ros_array_match = re.search(r'\[(.*)\]$', ros_type)
+                output[direction].append({
+                    'basic': False if '/' in mros_type else True,
+                    'array': mros_array_match is not None or ros_array_match is not None,
+                    'dynamic_array': (
+                        mros_array_match is not None and mros_array_match.group(1) == ''),
+                    'mros': {
+                        'name': mros_name,
+                        'type': re.sub(r'\[.*\]$', '', mros_type),
+                        'cpptype': re.sub(r'\[.*\]$', '', mros_type).replace('/', '::')
+                    },
+                    'ros': {
+                        'name': ros_name,
+                        'type': re.sub(r'\[.*\]$', '', ros_type),
+                        'cpptype': re.sub(r'\[.*\]$', '', ros_type).replace('/', '::msg::')
+                    }
+                })
+            if not match:
+                break
+        if match:
+            actions.append({
+                'mros_name': pair[0].message_name,
+                'ros_name': pair[1].message_name,
+                'mros_package': pair[0].package_name,
+                'ros_package': pair[1].package_name,
+                'fields': output
+            })
+    return actions
+
+
+def _adapter_field_descriptor(mros_field, ros_field):
+    mros_type = str(mros_field.type)
+    ros_type = str(ros_field.type)
+    mros_base_type = re.sub(r'\[.*\]$', '', mros_type)
+    ros_base_type = re.sub(r'\[.*\]$', '', ros_type)
+    return {
+        'basic': mros_field.type.pkg_name is None,
+        'array': bool(mros_field.type.is_array or ros_field.type.is_array),
+        'dynamic_array': bool(
+            (mros_field.type.is_array and (
+                getattr(mros_field.type, 'array_size', None) is None or
+                getattr(mros_field.type, 'is_upper_bound', False))) or
+            (ros_field.type.is_array and (
+                getattr(ros_field.type, 'array_size', None) is None or
+                getattr(ros_field.type, 'is_upper_bound', False)))),
+        'mros': {
+            'name': mros_field.name,
+            'type': mros_base_type,
+            'cpptype': (
+                mros_base_type if mros_field.type.pkg_name is None else
+                '%s::%s' % (mros_field.type.pkg_name, mros_field.type.type))
+        },
+        'ros': {
+            'name': ros_field.name,
+            'type': ros_base_type,
+            'cpptype': (
+                ros_base_type if ros_field.type.pkg_name is None else
+                '%s::msg::%s' % (ros_field.type.pkg_name, ros_field.type.type))
+        }
+    }
 
 
 def update_mros_field_information(mros_field, package_name):
@@ -799,6 +1081,28 @@ def load_mros_service(mros_srv):
     return spec
 
 
+def load_mros_action(mros_action):
+    action_context = msgloader.MsgContext.create_default()
+    action_path = os.path.join(mros_action.prefix_path, mros_action.message_name + '.action')
+    action_name = '%s/%s' % (mros_action.package_name, mros_action.message_name)
+    try:
+        with open(action_path, 'r') as h:
+            content = h.read()
+        parts = re.split(r'^\s*---\s*$', content, flags=re.MULTILINE)
+        if len(parts) != 3:
+            return None
+        return {
+            'goal': msgloader.msg_loader.load_msg_from_string(
+                action_context, parts[0], '%sActionGoal' % action_name),
+            'result': msgloader.msg_loader.load_msg_from_string(
+                action_context, parts[1], '%sActionResult' % action_name),
+            'feedback': msgloader.msg_loader.load_msg_from_string(
+                action_context, parts[2], '%sActionFeedback' % action_name)
+        }
+    except (OSError, msgloader.InvalidMsgSpec):
+        return None
+
+
 def load_ros_message(ros_msg):
     message_basepath = os.path.join(ros_msg.prefix_path, 'share')
     message_relative_path = \
@@ -848,6 +1152,17 @@ def load_ros_service(ros_srv):
     try:
         spec = rosidl_adapter.parser.parse_service_file(ros_srv.package_name, srv_path)
     except rosidl_adapter.parser.InvalidSpecification:
+        return None
+    return spec
+
+
+def load_ros_action(ros_action):
+    action_path = os.path.join(
+        ros_action.prefix_path, 'share', ros_action.package_name, 'action',
+        ros_action.message_name + '.action')
+    try:
+        spec = rosidl_adapter.parser.parse_action_file(ros_action.package_name, action_path)
+    except (OSError, rosidl_adapter.parser.InvalidActionSpecification):
         return None
     return spec
 

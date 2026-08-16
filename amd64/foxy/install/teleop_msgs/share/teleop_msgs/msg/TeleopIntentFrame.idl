@@ -1,0 +1,68 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from teleop_msgs/msg/TeleopIntentFrame.msg
+// generated code does not contain a copyright notice
+
+#include "controller_msgs/msg/JointCmd.idl"
+#include "geometry_msgs/msg/Pose.idl"
+#include "std_msgs/msg/Header.idl"
+#include "teleop_msgs/msg/TeleopRawInput.idl"
+#include "teleop_msgs/msg/TeleopTarget.idl"
+
+module teleop_msgs {
+  module msg {
+    module TeleopIntentFrame_Constants {
+      const uint16 SCHEMA_VERSION = 1;
+      const uint8 SOURCE_UNKNOWN = 0;
+      const uint8 SOURCE_VR = 1;
+      const uint8 SOURCE_MOCAP = 2;
+      const uint8 SOURCE_GLOVE = 3;
+      const uint8 SOURCE_FUSED = 4;
+    };
+    @verbatim (language="comment", text=
+      " 遥操作意图帧。输入汇聚层每组装出一个操作者帧，发布至多一条本消息。" "\n"
+      " 承载「操作者想做什么」，不承载任何控制决策。")
+    struct TeleopIntentFrame {
+      @verbatim (language="comment", text=
+        " stamp 为帧组装时刻；seq 为帧序号，供接收方检测丢帧。")
+      std_msgs::msg::Header header;
+
+      uint16 schema_version;
+
+      uint8 source;
+
+      @verbatim (language="comment", text=
+        " 参与本帧合成的全部输入源，按 1 << SOURCE_* 置位")
+      uint32 source_mask;
+
+      @verbatim (language="comment", text=
+        " targets 中位姿所在参考系的名称")
+      string reference_frame;
+
+      @verbatim (language="comment", text=
+        " 当参考系本身是运行时位姿（例如随头部偏航的参考系）时给出其位姿。" "\n"
+        " 参考系为静态具名坐标系时填单位位姿。")
+      geometry_msgs::msg::Pose reference_pose;
+
+      @verbatim (language="comment", text=
+        " 本帧的跟踪目标。目标缺席即表示该肢体本帧无输入。")
+      sequence<teleop_msgs::msg::TeleopTarget> targets;
+
+      @verbatim (language="comment", text=
+        " 原始输入是否有效。纯动捕帧没有手柄输入时为 false。")
+      boolean raw_valid;
+
+      teleop_msgs::msg::TeleopRawInput raw;
+
+      @verbatim (language="comment", text=
+        " 操作者侧选项：是否选择了「控头」。" "\n"
+        " 来源可能是 VR 应用内的选择，也可能是兼容服务设置，不属于设备原始输入。")
+      boolean head_control_selected;
+
+      @verbatim (language="comment", text=
+        " 全身重定向结果是否有效。是否真正下发由接收方决定。")
+      boolean retarget_valid;
+
+      controller_msgs::msg::JointCmd retarget_joints;
+    };
+  };
+};

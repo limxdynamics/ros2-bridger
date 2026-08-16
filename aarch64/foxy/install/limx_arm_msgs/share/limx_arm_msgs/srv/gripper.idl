@@ -1,0 +1,19 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from limx_arm_msgs/srv/gripper.srv
+// generated code does not contain a copyright notice
+
+
+module limx_arm_msgs {
+  module srv {
+    struct gripper_Request {
+      boolean initial;
+
+      int32 dis;
+
+      int32 force;
+    };
+    struct gripper_Response {
+      int32 status;
+    };
+  };
+};

@@ -1,0 +1,72 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from mros_msgs/msg/TopicInfo.msg
+// generated code does not contain a copyright notice
+
+
+module mros_msgs {
+  module msg {
+    module TopicInfo_Constants {
+      const uint32 ID_PUBLISHER = 0;
+      const uint32 ID_SUBSCRIBER = 1;
+      const uint32 ID_SERVICE_SERVER = 2;
+      const uint32 ID_SERVICE_CLIENT = 4;
+      const uint32 ID_MROSTOPIC_REQUEST = 6;
+      const uint32 ID_REMOVE_PUBLISHER = 7;
+      const uint32 ID_REMOVE_SUBSCRIBER = 8;
+      const uint32 ID_REMOVE_SERVICE_SERVER = 9;
+      const uint32 ID_REMOVE_SERVICE_CLIENT = 11;
+      const uint32 ID_MROSSERVICE_REQUEST = 13;
+      const uint32 ID_LOG = 14;
+      const uint32 ID_TIME = 15;
+      const uint32 ID_NEGOTIATED = 16;
+      const uint32 ID_SESSION_ID = 17;
+      const uint32 ID_ASHMEM_INFO = 18;
+      const uint32 ID_DIAG = 19;
+    };
+    @verbatim (language="comment", text=
+      " special topic_ids")
+    struct TopicInfo {
+      @verbatim (language="comment", text=
+        " The endpoint ID for this topic")
+      uint32 topic_id;
+
+      string topic_name;
+
+      string message_type;
+
+      @verbatim (language="comment", text=
+        " MD5 checksum for this message type")
+      string md5sum;
+
+      @verbatim (language="comment", text=
+        " size of the buffer message must fit in")
+      int32 buffer_size;
+
+      boolean negotiated;
+
+      @verbatim (language="comment", text=
+        " node name")
+      string node;
+
+      @verbatim (language="comment", text=
+        " definition")
+      string definition;
+
+      @verbatim (language="comment", text=
+        " latch")
+      boolean latch;
+
+      @verbatim (language="comment", text=
+        " reliable")
+      boolean reliable;
+
+      @verbatim (language="comment", text=
+        " queue_size")
+      int32 queue_size;
+
+      @verbatim (language="comment", text=
+        " enabled")
+      int32 enabled;
+    };
+  };
+};

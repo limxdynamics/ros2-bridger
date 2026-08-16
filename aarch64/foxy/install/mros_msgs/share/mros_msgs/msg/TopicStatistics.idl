@@ -1,0 +1,17 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from mros_msgs/msg/TopicStatistics.msg
+// generated code does not contain a copyright notice
+
+#include "mros_msgs/msg/TopicInfo.idl"
+
+module mros_msgs {
+  module msg {
+    struct TopicStatistics {
+      string node;
+
+      sequence<mros_msgs::msg::TopicInfo> subscribers;
+
+      sequence<mros_msgs::msg::TopicInfo> publishers;
+    };
+  };
+};

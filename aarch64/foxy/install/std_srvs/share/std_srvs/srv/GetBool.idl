@@ -1,0 +1,25 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from std_srvs/srv/GetBool.srv
+// generated code does not contain a copyright notice
+
+
+module std_srvs {
+  module srv {
+    struct GetBool_Request {
+      uint8 structure_needs_at_least_one_member;
+    };
+    struct GetBool_Response {
+      @verbatim (language="comment", text=
+        " e.g. for hardware enabling / disabling")
+      boolean data;
+
+      @verbatim (language="comment", text=
+        " indicate successful run of triggered service")
+      boolean success;
+
+      @verbatim (language="comment", text=
+        " informational, e.g. for error messages")
+      string message;
+    };
+  };
+};

@@ -1,0 +1,38 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from teleop_msgs/msg/TeleopTarget.msg
+// generated code does not contain a copyright notice
+
+#include "builtin_interfaces/msg/Time.idl"
+#include "geometry_msgs/msg/Pose.idl"
+
+module teleop_msgs {
+  module msg {
+    module TeleopTarget_Constants {
+      const uint8 VALIDITY_INVALID = 0;
+      const uint8 VALIDITY_VALID = 1;
+      const uint8 VALIDITY_STALE = 2;
+      const uint8 VALIDITY_EXTRAPOLATED = 3;
+    };
+    @verbatim (language="comment", text=
+      " 遥操作中的单个跟踪目标（末端、头、躯干、足等）。" "\n"
+      " 作为 TeleopIntentFrame.targets 的元素使用。")
+    struct TeleopTarget {
+      @verbatim (language="comment", text=
+        " 目标名。约定值：left_hand / right_hand / head / torso / base /" "\n"
+        " left_foot / right_foot / left_wrist / right_wrist。" "\n"
+        " 新增跟踪目标只需约定新名字，不需要改本消息。")
+      string name;
+
+      @verbatim (language="comment", text=
+        " 目标位姿。参考系由 TeleopIntentFrame.reference_frame 指定。")
+      geometry_msgs::msg::Pose pose;
+
+      uint8 validity;
+
+      @verbatim (language="comment", text=
+        " 该目标数据的采集时刻。与帧组装时刻（header.stamp）可能不同，" "\n"
+        " 接收方据此判断单个目标的新鲜度。")
+      builtin_interfaces::msg::Time source_stamp;
+    };
+  };
+};

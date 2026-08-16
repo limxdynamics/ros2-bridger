@@ -12,6 +12,10 @@ msg/ColorRGBA.idl
 msg/ColorRGBA.msg
 msg/ColorRGBAArray.idl
 msg/ColorRGBAArray.msg
+msg/Duration.idl
+msg/Duration.msg
+msg/DurationArray.idl
+msg/DurationArray.msg
 msg/Empty.idl
 msg/Empty.msg
 msg/Float32.idl
@@ -60,6 +64,10 @@ msg/String.idl
 msg/String.msg
 msg/StringArray.idl
 msg/StringArray.msg
+msg/Time.idl
+msg/Time.msg
+msg/TimeArray.idl
+msg/TimeArray.msg
 msg/UInt16.idl
 msg/UInt16.msg
 msg/UInt16Array.idl

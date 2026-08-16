@@ -1,0 +1,25 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from std_srvs/srv/SetFloat32WithTitle.srv
+// generated code does not contain a copyright notice
+
+
+module std_srvs {
+  module srv {
+    struct SetFloat32WithTitle_Request {
+      string title;
+
+      @verbatim (language="comment", text=
+        "data")
+      float data;
+    };
+    struct SetFloat32WithTitle_Response {
+      @verbatim (language="comment", text=
+        "indicate successful run of triggered service")
+      boolean success;
+
+      @verbatim (language="comment", text=
+        "informational, e.g. for error messages")
+      string message;
+    };
+  };
+};

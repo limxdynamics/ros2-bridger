@@ -1,0 +1,22 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from limx_arm_msgs/srv/desire_pos.srv
+// generated code does not contain a copyright notice
+
+
+module limx_arm_msgs {
+  module srv {
+    typedef float float__6[6];
+    struct desire_pos_Request {
+      int32 taskNum;
+
+      @verbatim (language="comment", text=
+        "deg/m")
+      float__6 desire_pos;
+
+      boolean co_control;
+    };
+    struct desire_pos_Response {
+      boolean status;
+    };
+  };
+};

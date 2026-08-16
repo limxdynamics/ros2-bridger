@@ -1,0 +1,53 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from actionlib/action/TestRequest.action
+// generated code does not contain a copyright notice
+
+#include "builtin_interfaces/msg/Duration.idl"
+
+module actionlib {
+  module action {
+    module TestRequest_Goal_Constants {
+      const int32 TERMINATE_SUCCESS = 0;
+      const int32 TERMINATE_ABORTED = 1;
+      const int32 TERMINATE_REJECTED = 2;
+      const int32 TERMINATE_LOSE = 3;
+      const int32 TERMINATE_DROP = 4;
+      const int32 TERMINATE_EXCEPTION = 5;
+    };
+    struct TestRequest_Goal {
+      int32 terminate_status;
+
+      @verbatim (language="comment", text=
+        " If true, ignores requests to cancel")
+      boolean ignore_cancel;
+
+      string result_text;
+
+      @verbatim (language="comment", text=
+        " Desired value for the_result in the Result")
+      int32 the_result;
+
+      boolean is_simple_client;
+
+      @verbatim (language="comment", text=
+        " Delays accepting the goal by this amount of time")
+      builtin_interfaces::msg::Duration delay_accept;
+
+      @verbatim (language="comment", text=
+        " Delays terminating for this amount of time")
+      builtin_interfaces::msg::Duration delay_terminate;
+
+      @verbatim (language="comment", text=
+        " Pauses the status messages for this amount of time")
+      builtin_interfaces::msg::Duration pause_status;
+    };
+    struct TestRequest_Result {
+      int32 the_result;
+
+      boolean is_simple_server;
+    };
+    struct TestRequest_Feedback {
+      uint8 structure_needs_at_least_one_member;
+    };
+  };
+};

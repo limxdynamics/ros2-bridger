@@ -5,6 +5,8 @@ from std_msgs.msg._byte_multi_array import ByteMultiArray  # noqa: F401
 from std_msgs.msg._char import Char  # noqa: F401
 from std_msgs.msg._color_rgba import ColorRGBA  # noqa: F401
 from std_msgs.msg._color_rgba_array import ColorRGBAArray  # noqa: F401
+from std_msgs.msg._duration import Duration  # noqa: F401
+from std_msgs.msg._duration_array import DurationArray  # noqa: F401
 from std_msgs.msg._empty import Empty  # noqa: F401
 from std_msgs.msg._float32 import Float32  # noqa: F401
 from std_msgs.msg._float32_array import Float32Array  # noqa: F401
@@ -29,6 +31,8 @@ from std_msgs.msg._multi_array_dimension import MultiArrayDimension  # noqa: F40
 from std_msgs.msg._multi_array_layout import MultiArrayLayout  # noqa: F401
 from std_msgs.msg._string import String  # noqa: F401
 from std_msgs.msg._string_array import StringArray  # noqa: F401
+from std_msgs.msg._time import Time  # noqa: F401
+from std_msgs.msg._time_array import TimeArray  # noqa: F401
 from std_msgs.msg._u_int16 import UInt16  # noqa: F401
 from std_msgs.msg._u_int16_array import UInt16Array  # noqa: F401
 from std_msgs.msg._u_int16_multi_array import UInt16MultiArray  # noqa: F401

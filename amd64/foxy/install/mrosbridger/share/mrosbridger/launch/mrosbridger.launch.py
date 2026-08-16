@@ -11,32 +11,32 @@ def generate_launch_description():
         DeclareLaunchArgument(
             "bridge_mros2ros",
             default_value="true",
-            description="Boolean flag to indicate whether to bridge mros to ros.",
+            description="Boolean flag to indicate whether to bridge MROS servers/publishers to ROS clients/subscribers.",
         ),
         DeclareLaunchArgument(
             "bridge_ros2mros",
             default_value="false",
-            description="Boolean flag to indicate whether to bridge ros to mros.",
+            description="Boolean flag to indicate whether to bridge ROS servers/publishers to MROS clients/subscribers.",
         ),
         DeclareLaunchArgument(
             "ros2mros_execlude",
             default_value="",
-            description="Execlude topics, topics are separated by ';'",
+            description="Exclude ros-to-mros topics, services, and actions; names are separated by ';'",
         ),
         DeclareLaunchArgument(
             "ros2mros_include",
             default_value="",
-            description="Include topics, topics are separated by ';'",
+            description="Include ros-to-mros topics, services, and actions; names are separated by ';'",
         ),
         DeclareLaunchArgument(
             "mros2ros_execlude",
             default_value="",
-            description="Execlude topics, topics are separated by ';'",
+            description="Exclude mros-to-ros topics, services, and actions; names are separated by ';'",
         ),
         DeclareLaunchArgument(
             "mros2ros_include",
             default_value="",
-            description="Include topics, topics are separated by ';'",
+            description="Include mros-to-ros topics, services, and actions; names are separated by ';'",
         ),
         Node(
             package='mrosbridger',

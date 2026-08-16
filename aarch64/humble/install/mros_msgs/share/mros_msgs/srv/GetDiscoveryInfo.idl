@@ -1,0 +1,23 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from mros_msgs/srv/GetDiscoveryInfo.srv
+// generated code does not contain a copyright notice
+
+#include "mros_msgs/msg/NodeInfo.idl"
+#include "mros_msgs/msg/TopicInfo.idl"
+
+module mros_msgs {
+  module srv {
+    struct GetDiscoveryInfo_Request {
+      uint8 structure_needs_at_least_one_member;
+    };
+    struct GetDiscoveryInfo_Response {
+      sequence<mros_msgs::msg::NodeInfo> nodes;
+
+      sequence<mros_msgs::msg::TopicInfo> subscribers;
+
+      sequence<mros_msgs::msg::TopicInfo> publishers;
+
+      sequence<mros_msgs::msg::TopicInfo> services;
+    };
+  };
+};

@@ -1,0 +1,31 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from teleop_msgs/msg/TeleopLimbState.msg
+// generated code does not contain a copyright notice
+
+
+module teleop_msgs {
+  module msg {
+    @verbatim (language="comment", text=
+      " 会话中单个肢体的决策状态。" "\n"
+      " 作为 TeleopSessionState.limbs 的元素使用。")
+    struct TeleopLimbState {
+      @verbatim (language="comment", text=
+        " 肢体名。与 TeleopTarget.name 取值一致。")
+      string name;
+
+      @verbatim (language="comment", text=
+        " 该肢体本周期是否处于跟随")
+      boolean following;
+
+      @verbatim (language="comment", text=
+        " 该侧末端是否允许无极开合。" "\n"
+        " 门控由发布方负责，扳机行程到开合程度的映射由接收方负责。")
+      boolean ee_closure_enabled;
+
+      @verbatim (language="comment", text=
+        " 该侧末端当前手势索引。" "\n"
+        " 循环切换与持久化由发布方负责，下发对应手势由接收方负责。")
+      uint8 ee_gesture_index;
+    };
+  };
+};

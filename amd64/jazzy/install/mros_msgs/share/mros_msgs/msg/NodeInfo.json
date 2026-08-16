@@ -1,0 +1,26 @@
+{
+  "type_description_msg": {
+    "type_description": {
+      "type_name": "mros_msgs/msg/NodeInfo",
+      "fields": [
+        {
+          "name": "node_name",
+          "type": {
+            "type_id": 17,
+            "capacity": 0,
+            "string_capacity": 0,
+            "nested_type_name": ""
+          },
+          "default_value": ""
+        }
+      ]
+    },
+    "referenced_type_descriptions": []
+  },
+  "type_hashes": [
+    {
+      "type_name": "mros_msgs/msg/NodeInfo",
+      "hash_string": "RIHS01_6fdcfd3ff99f8dd40b4e29c6cf34a9e53198f2015c51b6b40b06166cb6999380"
+    }
+  ]
+}

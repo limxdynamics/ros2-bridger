@@ -3,88 +3,6 @@ use serde::{Deserialize, Serialize};
 
 
 
-// Corresponds to limx_arm_msgs__msg__arm_status
-
-// This struct is not documented.
-#[allow(missing_docs)]
-
-#[allow(non_camel_case_types)]
-#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
-#[derive(Clone, Debug, PartialEq, PartialOrd)]
-pub struct arm_status {
-
-    // This member is not documented.
-    #[allow(missing_docs)]
-    pub left_joints: Vec<f64>,
-
-
-    // This member is not documented.
-    #[allow(missing_docs)]
-    pub right_joints: Vec<f64>,
-
-
-    // This member is not documented.
-    #[allow(missing_docs)]
-    pub left_endEffector: [f64; 7],
-
-
-    // This member is not documented.
-    #[allow(missing_docs)]
-    pub right_endEffector: [f64; 7],
-
-
-    // This member is not documented.
-    #[allow(missing_docs)]
-    pub ik_statu: i32,
-
-}
-
-
-
-impl Default for arm_status {
-  fn default() -> Self {
-    <Self as rosidl_runtime_rs::Message>::from_rmw_message(super::msg::rmw::arm_status::default())
-  }
-}
-
-impl rosidl_runtime_rs::Message for arm_status {
-  type RmwMsg = super::msg::rmw::arm_status;
-
-  fn into_rmw_message(msg_cow: std::borrow::Cow<'_, Self>) -> std::borrow::Cow<'_, Self::RmwMsg> {
-    match msg_cow {
-      std::borrow::Cow::Owned(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
-        left_joints: msg.left_joints.into(),
-        right_joints: msg.right_joints.into(),
-        left_endEffector: msg.left_endEffector,
-        right_endEffector: msg.right_endEffector,
-        ik_statu: msg.ik_statu,
-      }),
-      std::borrow::Cow::Borrowed(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
-        left_joints: msg.left_joints.as_slice().into(),
-        right_joints: msg.right_joints.as_slice().into(),
-        left_endEffector: msg.left_endEffector,
-        right_endEffector: msg.right_endEffector,
-      ik_statu: msg.ik_statu,
-      })
-    }
-  }
-
-  fn from_rmw_message(msg: Self::RmwMsg) -> Self {
-    Self {
-      left_joints: msg.left_joints
-          .into_iter()
-          .collect(),
-      right_joints: msg.right_joints
-          .into_iter()
-          .collect(),
-      left_endEffector: msg.left_endEffector,
-      right_endEffector: msg.right_endEffector,
-      ik_statu: msg.ik_statu,
-    }
-  }
-}
-
-
 // Corresponds to limx_arm_msgs__msg__JointData
 
 // This struct is not documented.
@@ -598,6 +516,88 @@ impl rosidl_runtime_rs::Message for ServoCmd {
       functionName: msg.functionName.to_string(),
       left_arm_pos: msg.left_arm_pos,
       right_arm_pos: msg.right_arm_pos,
+    }
+  }
+}
+
+
+// Corresponds to limx_arm_msgs__msg__arm_status
+
+// This struct is not documented.
+#[allow(missing_docs)]
+
+#[allow(non_camel_case_types)]
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
+pub struct arm_status {
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub left_joints: Vec<f64>,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub right_joints: Vec<f64>,
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub left_endEffector: [f64; 7],
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub right_endEffector: [f64; 7],
+
+
+    // This member is not documented.
+    #[allow(missing_docs)]
+    pub ik_statu: i32,
+
+}
+
+
+
+impl Default for arm_status {
+  fn default() -> Self {
+    <Self as rosidl_runtime_rs::Message>::from_rmw_message(super::msg::rmw::arm_status::default())
+  }
+}
+
+impl rosidl_runtime_rs::Message for arm_status {
+  type RmwMsg = super::msg::rmw::arm_status;
+
+  fn into_rmw_message(msg_cow: std::borrow::Cow<'_, Self>) -> std::borrow::Cow<'_, Self::RmwMsg> {
+    match msg_cow {
+      std::borrow::Cow::Owned(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
+        left_joints: msg.left_joints.into(),
+        right_joints: msg.right_joints.into(),
+        left_endEffector: msg.left_endEffector,
+        right_endEffector: msg.right_endEffector,
+        ik_statu: msg.ik_statu,
+      }),
+      std::borrow::Cow::Borrowed(msg) => std::borrow::Cow::Owned(Self::RmwMsg {
+        left_joints: msg.left_joints.as_slice().into(),
+        right_joints: msg.right_joints.as_slice().into(),
+        left_endEffector: msg.left_endEffector,
+        right_endEffector: msg.right_endEffector,
+      ik_statu: msg.ik_statu,
+      })
+    }
+  }
+
+  fn from_rmw_message(msg: Self::RmwMsg) -> Self {
+    Self {
+      left_joints: msg.left_joints
+          .into_iter()
+          .collect(),
+      right_joints: msg.right_joints
+          .into_iter()
+          .collect(),
+      left_endEffector: msg.left_endEffector,
+      right_endEffector: msg.right_endEffector,
+      ik_statu: msg.ik_statu,
     }
   }
 }

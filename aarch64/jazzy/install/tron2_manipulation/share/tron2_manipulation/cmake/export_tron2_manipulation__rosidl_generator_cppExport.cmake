@@ -61,7 +61,7 @@ add_library(tron2_manipulation::tron2_manipulation__rosidl_generator_cpp INTERFA
 set_target_properties(tron2_manipulation::tron2_manipulation__rosidl_generator_cpp PROPERTIES
   INTERFACE_COMPILE_FEATURES "cxx_std_17"
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include/tron2_manipulation"
-  INTERFACE_LINK_LIBRARIES "std_msgs::std_msgs__rosidl_generator_cpp;builtin_interfaces::builtin_interfaces__rosidl_generator_cpp;rosidl_runtime_cpp::rosidl_runtime_cpp"
+  INTERFACE_LINK_LIBRARIES "std_msgs::std_msgs__rosidl_generator_cpp;builtin_interfaces::builtin_interfaces__rosidl_generator_cpp;service_msgs::service_msgs__rosidl_generator_cpp;rosidl_runtime_cpp::rosidl_runtime_cpp"
 )
 
 if(CMAKE_VERSION VERSION_LESS 3.0.0)

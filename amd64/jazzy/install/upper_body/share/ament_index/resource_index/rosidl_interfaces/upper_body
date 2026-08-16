@@ -6,3 +6,7 @@ msg/servoJ.idl
 msg/servoJ.msg
 msg/waist_cmd.idl
 msg/waist_cmd.msg
+srv/arm_move.idl
+srv/arm_move.srv
+srv/moveJ.idl
+srv/moveJ.srv

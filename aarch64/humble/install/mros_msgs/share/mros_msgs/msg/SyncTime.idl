@@ -1,0 +1,19 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from mros_msgs/msg/SyncTime.msg
+// generated code does not contain a copyright notice
+
+#include "builtin_interfaces/msg/Time.idl"
+
+module mros_msgs {
+  module msg {
+    struct SyncTime {
+      @verbatim (language="comment", text=
+        "milliseconds")
+      uint32 tick;
+
+      @verbatim (language="comment", text=
+        "dds time")
+      builtin_interfaces::msg::Time data;
+    };
+  };
+};

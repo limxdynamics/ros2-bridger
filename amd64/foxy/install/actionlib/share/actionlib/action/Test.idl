@@ -1,0 +1,18 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from actionlib/action/Test.action
+// generated code does not contain a copyright notice
+
+
+module actionlib {
+  module action {
+    struct Test_Goal {
+      int32 goal;
+    };
+    struct Test_Result {
+      int32 result;
+    };
+    struct Test_Feedback {
+      int32 feedback;
+    };
+  };
+};
