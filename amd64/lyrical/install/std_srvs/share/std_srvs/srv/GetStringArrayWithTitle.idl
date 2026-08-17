@@ -1,0 +1,23 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from std_srvs/srv/GetStringArrayWithTitle.srv
+// generated code does not contain a copyright notice
+
+
+module std_srvs {
+  module srv {
+    struct GetStringArrayWithTitle_Request {
+      string title;
+    };
+    struct GetStringArrayWithTitle_Response {
+      sequence<string> data;
+
+      @verbatim (language="comment", text=
+        "indicate successful run of triggered service")
+      boolean success;
+
+      @verbatim (language="comment", text=
+        "informational, e.g. for error messages")
+      string message;
+    };
+  };
+};

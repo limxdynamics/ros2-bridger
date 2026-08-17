@@ -1,0 +1,5 @@
+---
+mros_msgs/NodeInfo[] nodes
+mros_msgs/TopicInfo[] subscribers
+mros_msgs/TopicInfo[] publishers
+mros_msgs/TopicInfo[] services

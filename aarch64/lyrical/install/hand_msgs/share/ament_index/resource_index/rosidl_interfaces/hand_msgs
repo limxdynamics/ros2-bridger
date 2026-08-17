@@ -1,0 +1,14 @@
+msg/HandCmd.idl
+msg/HandCmd.msg
+msg/HandMsg.idl
+msg/HandMsg.msg
+msg/HandState.idl
+msg/HandState.msg
+msg/TactileCmd.idl
+msg/TactileCmd.msg
+msg/TactileHandCmd.idl
+msg/TactileHandCmd.msg
+msg/TactileHandState.idl
+msg/TactileHandState.msg
+msg/TactileState.idl
+msg/TactileState.msg

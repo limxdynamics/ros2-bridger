@@ -1,0 +1,25 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from hand_msgs/msg/TactileState.msg
+// generated code does not contain a copyright notice
+
+#include "std_msgs/msg/Header.idl"
+
+module hand_msgs {
+  module msg {
+    struct TactileState {
+      std_msgs::msg::Header header;
+
+      sequence<string> names;
+
+      sequence<float> normal_force;
+
+      sequence<float> tangential_force;
+
+      sequence<float> direction_angle;
+
+      sequence<uint32> approximate_value;
+
+      sequence<uint16> tactile_state;
+    };
+  };
+};

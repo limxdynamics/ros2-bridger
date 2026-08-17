@@ -1,0 +1,57 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from limx_arm_msgs/msg/JointStatus.msg
+// generated code does not contain a copyright notice
+
+
+module limx_arm_msgs {
+  module msg {
+    typedef int32 int32__6[6];
+    typedef string string__6[6];
+    typedef float float__6[6];
+    typedef float float__3[3];
+    module JointStatus_Constants {
+      @verbatim (language="comment", text=
+        "01位置控制，03速度模式，04电流模式")
+      const int32 MODE_ANGLE = 1;
+      const int32 MODE_VELOCITY = 3;
+      const int32 MODE_CURRENT = 4;
+      const int32 STATE_IDLE = 1;
+      const int32 STATE_STARTED = 2;
+      const int32 STATE_PAUSED = 3;
+      const int32 STATE_RESUMED = 4;
+      const int32 STATE_STOPED = 5;
+      const int32 STATE_SHUTDOWN = 6;
+      const int32 PLAY_STATE_IDLE = 0;
+      const int32 PLAY_STATE_STARTED = 1;
+      const int32 PLAY_STATE_FAILED = 2;
+      const int32 PLAY_STATE_FINISHED = 3;
+    };
+    struct JointStatus {
+      int64 stamp;
+
+      string deviceid;
+
+      int64 run_time;
+
+      int32__6 enable;
+
+      string__6 error;
+
+      float__6 zero;
+
+      float__6 limit_min;
+
+      float__6 limit_max;
+
+      float__3 tool_size;
+
+      int32 mode;
+
+      int32 state;
+
+      int32 play_state;
+
+      string log_path;
+    };
+  };
+};
