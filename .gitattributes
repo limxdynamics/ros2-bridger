@@ -1,4 +1,19 @@
+amd64/foxy/install/mrosbridger/bin/mrosbridger filter=lfs diff=lfs merge=lfs -text
+aarch64/foxy/install/mrosbridger/bin/mrosbridger filter=lfs diff=lfs merge=lfs -text
+amd64/foxy/install/mrosbridger/lib/mrosbridger/mrosbridger filter=lfs diff=lfs merge=lfs -text
+aarch64/foxy/install/mrosbridger/lib/mrosbridger/mrosbridger filter=lfs diff=lfs merge=lfs -text
+
+amd64/humble/install/mrosbridger/bin/mrosbridger filter=lfs diff=lfs merge=lfs -text
+aarch64/humble/install/mrosbridger/bin/mrosbridger filter=lfs diff=lfs merge=lfs -text
+amd64/humble/install/mrosbridger/lib/mrosbridger/mrosbridger filter=lfs diff=lfs merge=lfs -text
+aarch64/humble/install/mrosbridger/lib/mrosbridger/mrosbridger filter=lfs diff=lfs merge=lfs -text
+
 amd64/jazzy/install/mrosbridger/bin/mrosbridger filter=lfs diff=lfs merge=lfs -text
 aarch64/jazzy/install/mrosbridger/bin/mrosbridger filter=lfs diff=lfs merge=lfs -text
 amd64/jazzy/install/mrosbridger/lib/mrosbridger/mrosbridger filter=lfs diff=lfs merge=lfs -text
 aarch64/jazzy/install/mrosbridger/lib/mrosbridger/mrosbridger filter=lfs diff=lfs merge=lfs -text
+
+amd64/lyrical/install/mrosbridger/bin/mrosbridger filter=lfs diff=lfs merge=lfs -text
+aarch64/lyrical/install/mrosbridger/bin/mrosbridger filter=lfs diff=lfs merge=lfs -text
+amd64/lyrical/install/mrosbridger/lib/mrosbridger/mrosbridger filter=lfs diff=lfs merge=lfs -text
+aarch64/lyrical/install/mrosbridger/lib/mrosbridger/mrosbridger filter=lfs diff=lfs merge=lfs -text
