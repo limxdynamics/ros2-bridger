@@ -1,9 +1,24 @@
-LimX Dynamics
+LimX Dynamics ros2-bridger
 Copyright (c) 2026 LimX Dynamics. All Rights Reserved.
 
-This repository redistributes a complete ROS 2 Foxy installation under the
-directory aarch64/foxy/install/. It contains numerous third-party ROS 2
-packages, each distributed under its own license terms (Apache-2.0, BSD-2/3-Clause,
-MIT, and others). The applicable license texts are preserved alongside each
-package within aarch64/foxy/install/. Refer to the respective package LICENSE
-files for the exact terms governing each component.
+This repository distributes prebuilt ROS 2 packages for two architectures
+(amd64, aarch64) and four ROS 2 distributions (foxy, humble, jazzy, lyrical),
+located in the following eight directories:
+
+  amd64/foxy/install/      aarch64/foxy/install/
+  amd64/humble/install/    aarch64/humble/install/
+  amd64/jazzy/install/     aarch64/jazzy/install/
+  amd64/lyrical/install/   aarch64/lyrical/install/
+
+Each directory contains the same set of packages:
+
+  mrosbridger, mros_msgs, actionlib, controller_msgs, hand_msgs,
+  limx_arm_msgs, std_msgs, std_srvs, teleop_msgs, tron2_manipulation,
+  upper_body
+
+The license declared by each package is recorded in its package.xml, found at
+<install-dir>/<package>/share/<package>/package.xml.
+
+These packages do not constitute a complete ROS 2 installation. They are
+intended to be used on top of an existing ROS 2 installation at
+/opt/ros/<distro>, which is distributed separately under its own license terms.
